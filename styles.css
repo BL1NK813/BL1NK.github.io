@@ -25,7 +25,8 @@
 }
 
 .progress_few {
-    height: 100%;
+    height: device-width;
+    width: device-width;
     background-color: #FFD700;
     border-radius: 10px;
     display: flex;
@@ -33,7 +34,8 @@
 }
 
 body, html {
-    height: 100%;
+    height: device-width;
+    width: device-width;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -42,6 +44,7 @@ body, html {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a; /* Темный фон */
     color: #f0f0f0; /* Светлый текст */
+    user-scalable: no;
 }
 
 
