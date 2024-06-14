@@ -34,8 +34,7 @@
 }
 
 body, html {
-    height: device-width;
-    width: device-width;
+    height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
