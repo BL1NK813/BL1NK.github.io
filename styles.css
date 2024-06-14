@@ -1,0 +1,406 @@
+.progress_few {
+    position: relative;
+    height: 10px;
+    width: 80%;
+    max-width: 450px;
+    border-radius: 15px;
+}
+
+.progress_few .color {
+    position: absolute;
+    background-color: #fff;
+    width: 0;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 4s linear forwards;
+}
+
+@keyframes progres {
+    0% {
+        width: 1%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.progress_few {
+    height: 100%;
+    background-color: #FFD700;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Темный фон */
+    color: #f0f0f0; /* Светлый текст */
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('background.png');
+}
+
+.main_menu {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info{
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar{
+    border-radius: 6px;
+    width: 90%;
+    height: 10%;
+    max-width: 350px;
+    background-color: #000;
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.avatar span{
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.avatar_pod{
+    border-radius: 6px;
+    width: 90%;
+    max-width: 350px;
+    height: 25px;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.tap {
+    border-radius: 6px;
+    width: 20%;
+    height: 20px;
+    background-color: #000;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    box-sizing: 20%;
+}
+
+.next-lvl {
+    border-radius: 6px;
+    width: 25%;
+    height: 20px;
+    background-color: #000;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: 25%;
+}
+
+.lvl {
+    border-radius: 6px;
+    width: 25%;
+    height: 20px;
+    background-color: #000;
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: 25%;
+}
+
+.tap img, .lvl img, .next-lvl img{
+    width: 25px;
+    height: 25px;
+}
+
+.progress_coin{
+    margin-top: 2%;
+}
+
+.progress_coin span{
+    text-size: 50px;
+}
+
+.coins_progress {
+    border-radius: 6px;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 250%;
+    color: #fff;
+    align-items: center;
+}
+
+.coins_progress img {
+    width: 12%;
+    height: 12%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.progress {
+    position: relative;
+    height: 10px;
+    width: 80%;
+    margin-top: 2%;
+    max-width: 450px;
+    border-radius: 15px;
+}
+
+.progress .color {
+    position: absolute;
+    background-color: #fff;
+    width: 0;
+    height: 10px;
+    border-radius: 15px;
+    margin-top: 2%;
+    animation: progres 4s linear forwards;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    align-items: center;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.coin {
+    width: 230px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#image-button {
+    width: 100%;
+    height: 100%;
+    background: url('coin.png') no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+#image-button:active {
+    transform: scale(0.9);
+}
+
+@keyframes pressAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#image-button:active {
+    animation: pressAnimation 0.1s ease-in-out;
+}
+
+.energy-info {
+    margin-top: 3%;
+    border-radius: 6px;
+    width: 90%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    align-items: center;
+}
+
+.energy-info img {
+    width: 15%;
+    height: 15%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.energy_tap{
+    display: inline-block;
+    margin-left: 2%;
+    width: 30%;
+    border: none;
+    font-size: 130%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.energy_tap img{
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    align-items: center;
+}
+
+.boost_button{
+    background:
+    width: 35%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 35%;
+    font-size: 110%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+}
+
+.boost_button img{
+    margin: 15px;
+    width: 22%;
+    height: 22%;
+    align-items: center;
+}
+
+.navigation {
+    padding: 2%;
+    width: 100%;
+    height: 25%;
+    max-width: 350px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #000;
+    border-radius: 6px;
+}
+
+/*}*/
+
+
+/*.navigation1{*/
+
+
+/*}*/
+/*.navigation2{*/
+
+/*}*/
+/*.navigation3{*/
+
+/*}*/
+/*.navigation4{*/
+
+/*}*/
+.navigation-line{
+    width: 85%;
+    height: 25%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #000;
+    border-radius: 6px;
+    margin-top: 7px;
+}
+
+.navigation button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.coin {
+    position: relative;
+    display: inline-block; /* Чтобы уведомление располагалось рядом с изображением */
+}
+
+.coin-notification {
+    position: absolute;
+    top: 50%; /* Располагаем уведомление по вертикали в центре */
+    left: 50%; /* Располагаем уведомление по горизонтали в центре */
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1; /* Выше остальных элементов */
+    opacity: 0; /* Изначально делаем уведомление невидимым */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Плавная анимация появления */
+    pointer-events: none; /* Уведомление не будет перехватывать события мыши */
+}
+
+.coin:hover .coin-notification {
+    opacity: 1; /* При наведении делаем уведомление видимым */
+    transform: translate(-50%, -60%); /* Немного поднимаем уведомление */
+}
