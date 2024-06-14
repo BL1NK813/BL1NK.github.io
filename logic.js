@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
      setTimeout(function() {
         document.getElementById('loading-screen').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-     }, 0);
+     }, 4000);
 });
 
 let energyTap = 1000;
