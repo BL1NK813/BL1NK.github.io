@@ -44,7 +44,6 @@ body, html {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a; /* Темный фон */
     color: #f0f0f0; /* Светлый текст */
-    user-scalable: no;
 }
 
 
