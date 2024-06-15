@@ -1,8 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-     setTimeout(function() {
-        document.getElementById('loading-screen').style.display = 'none';
+    const dotsElement = document.getElementById('dots');
+    let dotCount = 0;
+
+    const changeDots = () => {
+        dotCount = (dotCount + 1) % 4;
+        dotsElement.textContent = '.'.repeat(dotCount);
+    };
+
+    const intervalId = setInterval(changeDots, 500);
+
+    setTimeout(function() {
+        clearInterval(intervalId);
+        document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-     }, 4000);
+    }, 3000);
 });
 
 let energyTap = 1000;
