@@ -19,13 +19,13 @@
 
 .loading_text {
     top: 500%;
-    font-size: 25px;
+    font-size: 23px;
     color: #fff;
 }
 
 .loading_subtext {
     top: 1200%;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .progress_few .color {
