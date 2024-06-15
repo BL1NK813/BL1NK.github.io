@@ -1,14 +1,11 @@
-/* Основной стиль для progress_few */
 .progress_few {
     position: relative;
     height: 10px;
     width: 80%;
     max-width: 450px;
     border-radius: 15px;
-    background-color: #FFD700; /* Основной цвет фона */
 }
 
-/* Цвета */
 .progress_few .color {
     position: absolute;
     background-color: #fff;
@@ -27,30 +24,39 @@
     }
 }
 
-/* Основной стиль для контейнера и загрузочного экрана */
+.progress_few {
+    height: 100%;
+    background-color: #FFD700;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
 body, html {
     height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a; /* Темный фон */
     color: #f0f0f0; /* Светлый текст */
 }
 
+
 .container {
-    width: 100%;
-    height: 100%;
+    width: device-width;
+    height: device-height;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url('background.png');
     background-size: cover;
-    background-position: center;
+    background-position: relative;
     background-repeat: no-repeat;
-    padding: 1em; /* Добавим отступ для мобильных устройств */
+
 }
 
 .main_menu {
@@ -61,7 +67,7 @@ body, html {
     align-items: center;
 }
 
-.profile-info {
+.profile-info{
     margin-top: 20px;
     width: 90%;
     display: flex;
@@ -69,9 +75,10 @@ body, html {
     align-items: center;
 }
 
-.avatar {
+.avatar{
     border-radius: 6px;
     width: 90%;
+    height: 10%;
     max-width: 350px;
     background-color: #000;
     margin-top: 1%;
@@ -81,7 +88,7 @@ body, html {
     padding: 20px;
 }
 
-.avatar span {
+.avatar span{
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -90,7 +97,7 @@ body, html {
     color: #fff;
 }
 
-.avatar_pod {
+.avatar_pod{
     border-radius: 6px;
     width: 90%;
     max-width: 350px;
@@ -103,7 +110,7 @@ body, html {
     text-align: center;
 }
 
-.tap, .next-lvl, .lvl {
+.tap {
     border-radius: 6px;
     width: 20%;
     height: 20px;
@@ -111,25 +118,55 @@ body, html {
     margin: 5px;
     display: flex;
     justify-content: center;
+    padding: 20px;
     align-items: center;
     font-size: 12px;
     color: #fff;
     text-align: center;
-    padding: 20px;
-    box-sizing: border-box; /* Исправим box-sizing */
+    box-sizing: 20%;
 }
 
-.tap img, .lvl img, .next-lvl img {
+.next-lvl {
+    border-radius: 6px;
+    width: 25%;
+    height: 20px;
+    background-color: #000;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: 25%;
+}
+
+.lvl {
+    border-radius: 6px;
+    width: 25%;
+    height: 20px;
+    background-color: #000;
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: 25%;
+}
+
+.tap img, .lvl img, .next-lvl img{
     width: 25px;
     height: 25px;
 }
 
-.progress_coin {
+.progress_coin{
     margin-top: 2%;
 }
 
-.progress_coin span {
-    font-size: 50px; /* Исправим text-size на font-size */
+.progress_coin span{
+    text-size: 50px;
 }
 
 .coins_progress {
@@ -141,11 +178,34 @@ body, html {
     justify-content: center;
     font-size: 250%;
     color: #fff;
+    align-items: center;
 }
 
 .coins_progress img {
     width: 12%;
     height: 12%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.progress {
+    position: relative;
+    height: 10px;
+    width: 80%;
+    margin-top: 2%;
+    max-width: 450px;
+    border-radius: 15px;
+}
+
+.progress .color {
+    position: absolute;
+    background-color: #fff;
+    width: 0;
+    height: 10px;
+    border-radius: 15px;
+    margin-top: 2%;
+    animation: progres 4s linear forwards;
 }
 
 .progress-bar {
@@ -153,6 +213,7 @@ body, html {
     height: 20px;
     background-color: #ddd;
     border-radius: 10px;
+    align-items: center;
     margin-top: 2%;
     display: flex;
     justify-content: center;
@@ -179,7 +240,6 @@ body, html {
 
 #image-button:active {
     transform: scale(0.9);
-    animation: pressAnimation 0.1s ease-in-out;
 }
 
 @keyframes pressAnimation {
@@ -194,53 +254,67 @@ body, html {
     }
 }
 
+#image-button:active {
+    animation: pressAnimation 0.1s ease-in-out;
+}
+
 .energy-info {
     margin-top: 3%;
     border-radius: 6px;
     width: 90%;
     height: 10%;
+    align-items: center;
     display: flex;
     justify-content: space-between;
     color: #fff;
+    align-items: center;
 }
 
 .energy-info img {
     width: 15%;
     height: 15%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
-.energy_tap {
+.energy_tap{
     display: inline-block;
     margin-left: 2%;
     width: 30%;
     border: none;
     font-size: 130%;
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.energy_tap img {
+.energy_tap img{
     margin: 5px;
     width: 20px;
     height: 20px;
+    border: none;
+    align-items: center;
 }
 
-.boost_button {
-    background-color: rgba(0, 0, 0, 0);
+.boost_button{
+    background:
     width: 35%;
+    align-items: center;
     display: flex;
     justify-content: center;
     margin-left: 35%;
     font-size: 110%;
     border: none;
+    background-color: rgba(0, 0, 0, 0);
     color: #fff;
 }
 
-.boost_button img {
+.boost_button img{
     margin: 15px;
     width: 22%;
     height: 22%;
+    align-items: center;
 }
 
 .navigation {
@@ -254,7 +328,23 @@ body, html {
     border-radius: 6px;
 }
 
-.navigation-line {
+/*}*/
+
+
+/*.navigation1{*/
+
+
+/*}*/
+/*.navigation2{*/
+
+/*}*/
+/*.navigation3{*/
+
+/*}*/
+/*.navigation4{*/
+
+/*}*/
+.navigation-line{
     width: 85%;
     height: 25%;
     display: flex;
@@ -265,7 +355,7 @@ body, html {
 }
 
 .navigation button {
-    background-color: #000;
+    background-color: #000000;
     color: white;
     padding: 10px 14px;
     border: none;
@@ -284,6 +374,7 @@ body, html {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
 }
+
 
 .coin {
     position: relative;
@@ -314,37 +405,4 @@ body, html {
 .coin:hover .coin-notification {
     opacity: 1; /* При наведении делаем уведомление видимым */
     transform: translate(-50%, -60%); /* Немного поднимаем уведомление */
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    .avatar {
-        padding: 10px;
-        flex-direction: column;
-    }
-    .avatar span {
-        margin: 10px 0;
-    }
-    .tap, .next-lvl, .lvl {
-        width: 100%;
-        margin: 10px 0;
-    }
-    .progress-bar, .coins_progress, .energy-info, .navigation-line {
-        width: 100%;
-    }
-    .energy_tap {
-        font-size: 100%;
-    }
-    .boost_button {
-        margin-left: 0;
-        width: 100%;
-    }
-    .coin {
-        width: 80%;
-        height: 80%;
-    }
-    #image-button {
-        width: 80%;
-        height: 80%;
-    }
 }
