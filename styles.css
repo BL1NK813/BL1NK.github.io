@@ -1,3 +1,4 @@
+# Загрузка страницы и анимация
 .progress_few {
     position: relative;
     height: 10px;
@@ -6,6 +7,24 @@
     background-color: #fff;
     top: -5%; /* Позиционирование прогресс-бара на 20% от верха */
     transform: translateY(50%);
+}
+
+.progress_few .color {
+    position: absolute;
+    background-color: #FFD700;
+    width: 0;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 3s linear forwards;
+}
+
+@keyframes progres {
+    0% {
+        width: 1%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 .loading_text, .loading_subtext {
@@ -28,24 +47,7 @@
     font-size: 19px;
 }
 
-.progress_few .color {
-    position: absolute;
-    background-color: #FFD700;
-    width: 0;
-    height: 10px;
-    border-radius: 15px;
-    animation: progres 3s linear forwards;
-}
-
-@keyframes progres {
-    0% {
-        width: 1%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
+# Сама страница
 body, html {
     width: 100vw;
     height: 100vh;
