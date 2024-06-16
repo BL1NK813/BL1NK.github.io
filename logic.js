@@ -16,56 +16,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 3000);
 });
 
-let energyTap = 1000;
+let energyTap = 500;
+const energyTapMax = 500;
+const energyTapDecrement = 3;
 let coinsProgress = 0;
-const energyTapDecrement = 6; // Сколько энергии отнимается при каждом нажатии
-const coinsIncrement = 6; // Сколько монет добавляется при каждом нажатии
-const energyRestoreRate = 20; // Сколько энергии восстанавливается в секунду
+const coinsIncrement = 3;
 
-// Функция для обновления отображения энергии
-function updateEnergyDisplay() {
-    const energySpan = document.querySelector('.energy_tap');
-    energySpan.innerHTML = `<img src="energy.png"> ${energyTap}/1000`;
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('image-button');
+
+    // Обработка нажатия мыши
+    button.addEventListener('mousedown', handleMouseDown);
+
+    // Обработка отпускания мыши
+    button.addEventListener('mouseup', handleMouseUp);
+
+    // Устанавливаем интервал для восстановления энергии каждую секунду
+    setInterval(restoreEnergy, 1000);
+
+    // Инициализируем начальное отображение энергии и прогресса монет
+    updateEnergyDisplay();
+    updateCoinsProgressDisplay();
+});
+
+let isMouseDown = false;
+
+function handleMouseDown(event) {
+    isMouseDown = true;
+    handleClick(event);
 }
 
-// Функция для обновления отображения прогресса монет
-function updateCoinsProgressDisplay() {
-    const coinsProgressDiv = document.querySelector('.coins_progress');
-    coinsProgressDiv.innerHTML = `<img src="coin.png"> ${coinsProgress.toLocaleString()}`;
-}
-
-// Функция для создания и анимации уведомления о монетах
-function showCoinNotification(message, posX, posY) {
-    const coinButton = document.querySelector('.coin');
-    const notification = document.createElement('div');
-    notification.classList.add('coin-notification');
-    notification.textContent = message;
-    notification.style.left = `${posX}px`; // Устанавливаем позицию по горизонтали
-    notification.style.top = `${posY}px`; // Устанавливаем позицию по вертикали
-    coinButton.appendChild(notification);
-
-    // Плавно исчезаем уведомление через 2 секунды
-    setTimeout(() => {
-        notification.style.opacity = 0;
-        setTimeout(() => {
-            notification.remove();
-        }, 200); // Даем время для анимации исчезновения
-    }, 1000);
-}
-
-// Функция для восстановления энергии каждую секунду
-function restoreEnergy() {
-    if (energyTap < 1000) {
-        energyTap += energyRestoreRate;
-        if (energyTap > 1000) {
-            energyTap = 1000; // Ограничение восстановленной энергии до максимального значения
-        }
-        updateEnergyDisplay();
-    }
+function handleMouseUp() {
+    isMouseDown = false;
 }
 
 // Функция для обработки нажатия на кнопку
 function handleClick(event) {
+    if (!isMouseDown) return;
+
     if (energyTap >= energyTapDecrement) {
         energyTap -= energyTapDecrement;
         coinsProgress += coinsIncrement;
@@ -78,20 +66,43 @@ function handleClick(event) {
         const posY = event.clientY - rect.top;
 
         showCoinNotification(`+${coinsIncrement} монет`, posX, posY);
+
+        // Рекурсивный вызов для поддержки многократного нажатия
+        setTimeout(() => handleClick(event), 100);
     } else {
         alert('Недостаточно энергии!');
     }
 }
 
-// Добавляем обработчик события для кнопки
-document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('image-button');
-    button.addEventListener('click', handleClick);
+function restoreEnergy() {
+    if (energyTap < energyTapMax) {
+        energyTap += 1; // Скорость восстановления энергии
+        if (energyTap > energyTapMax) {
+            energyTap = energyTapMax; // Предотвращаем превышение максимума
+        }
+        updateEnergyDisplay();
+    }
+}
 
-    // Устанавливаем интервал для восстановления энергии каждую секунду
-    setInterval(restoreEnergy, 1000);
+function updateEnergyDisplay() {
+    const energyDisplay = document.querySelector('.energy_tap');
+    energyDisplay.innerHTML = `<img src="energy.png">${energyTap}/${energyTapMax}`;
+}
 
-    // Инициализируем начальное отображение энергии и прогресса монет
-    updateEnergyDisplay();
-    updateCoinsProgressDisplay();
-});
+function updateCoinsProgressDisplay() {
+    const coinsProgressDisplay = document.querySelector('.tap_coins');
+    coinsProgressDisplay.innerHTML = `<img src="coin.png">${coinsProgress}`;
+}
+
+function showCoinNotification(message, x, y) {
+    const notification = document.createElement('div');
+    notification.className = 'coin-notification';
+    notification.innerText = message;
+    notification.style.left = `${x}px`;
+    notification.style.top = `${y}px`;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 1000);
+}
+

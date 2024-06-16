@@ -1,5 +1,5 @@
 /*Страница загрузки и анимация*/
-.progress_feww {
+.progress_few1 {
     position: relative;
     height: 10px;
     width: 80%;
@@ -9,7 +9,7 @@
     transform: translateY(50%);
 }
 
-.progress_feww .color {
+.progress_few1 .color {
     position: absolute;
     background-color: #FFD700;
     width: 0;
@@ -45,6 +45,22 @@
 .loading_subtext {
     top: 1200%;
     font-size: 19px;
+}
+
+/*Отключение взаимодействия*/
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+img, button, input, textarea {
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /*Сама страница*/
@@ -227,7 +243,7 @@ body, html {
     text-size: 50px;
 }
 
-.coins_progress {
+.tap_coins {
     border-radius: 6px;
     width: 100%;
     height: 10%;
@@ -239,7 +255,7 @@ body, html {
     align-items: center;
 }
 
-.coins_progress img {
+.tap_coins img {
     width: 12%;
     height: 12%;
     align-items: center;
@@ -247,13 +263,13 @@ body, html {
     justify-content: center;
 }
 
-.progress {
+/*.progress {
     position: relative;
     height: 10px;
     width: 80%;
     margin-top: 2%;
     border-radius: 15px;
-}
+}*/
 
 .progress .color {
     position: absolute;
@@ -406,13 +422,12 @@ body, html {
     height: 25%;
     display: flex;
     justify-content: space-around;
-    background-color: #000;
     border-radius: 6px;
     margin-top: 7px;
 }
 
 .navigation button {
-    background-color: #000000;
+    background-color: #000;
     color: white;
     padding: 10px 14px;
     border: none;
