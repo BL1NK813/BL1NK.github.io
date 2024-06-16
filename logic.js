@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3000);
+    }, 000);
 });
 
-let energyTap = 500;
-const energyTapMax = 500;
-const energyTapDecrement = 3;
-let coinsProgress = 0;
-const coinsIncrement = 3;
+let energyTap = 500; /*Энергия*/
+const energyTapMax = 500; /*Макс энергия*/
+const energyTapDecrement = 100; /*Сколько энергии отнимается*/
+let coinsProgress = 0; /*Хз че это*/
+const coinsIncrement = 3; /*Сколько монет прибавляется*/
 
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('image-button');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('mouseup', handleMouseUp);
 
     // Устанавливаем интервал для восстановления энергии каждую секунду
-    setInterval(restoreEnergy, 1000);
+    setInterval(restoreEnergy, 1030);
 
     // Инициализируем начальное отображение энергии и прогресса монет
     updateEnergyDisplay();
@@ -70,7 +70,9 @@ function handleClick(event) {
         // Рекурсивный вызов для поддержки многократного нажатия
         setTimeout(() => handleClick(event), 100);
     } else {
-        alert('Недостаточно энергии!');
+        document.getElementById('image-button').addEventListener('click', function(event) {
+            event.preventDefault();
+        });
     }
 }
 
@@ -86,12 +88,12 @@ function restoreEnergy() {
 
 function updateEnergyDisplay() {
     const energyDisplay = document.querySelector('.energy_tap');
-    energyDisplay.innerHTML = `<img src="energy.png">${energyTap}/${energyTapMax}`;
+    energyDisplay.innerHTML = `<img src="energy.png" alt="coin">${energyTap}/${energyTapMax}`;
 }
 
 function updateCoinsProgressDisplay() {
-    const coinsProgressDisplay = document.querySelector('.tap_coins');
-    coinsProgressDisplay.innerHTML = `<img src="coin.png">${coinsProgress}`;
+    const coinsProgressDisplay = document.querySelector('.farm_coins');
+    coinsProgressDisplay.innerHTML = `<img src="coin.png" alt="coin">${coinsProgress}`;
 }
 
 function showCoinNotification(message, x, y) {

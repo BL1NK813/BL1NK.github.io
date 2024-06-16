@@ -4,16 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no">
     <title>Qadam</title>
+    <link rel="icon" href="main.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <script src="logic.js" defer></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        socket.on('username', (username) => {
-            document.getElementById('tg_name_id').textContent = username;
-        });
-    </script>
 </head>
 <body>
 <div id="progress_few" class="progress_few1">
@@ -25,35 +18,35 @@
 <div class="container" style="display: none">
 
     <div class="avatar">
-        <span class="avatar1" id="avatar1_id"><img src="avatar.png"></span>
-        <span class="tg_name" id="tg_name_id"></span>
-        <span class="avatar2"><img src="main.png"></span>
+        <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
+        <span class="tg_name" id="tg_name_id">ABOBA1337</span>
+        <span class="avatar2"><img src="main.png" alt="main"></span>
     </div>
 
 
     <div class="avatar_pod">
         <div class="avatar_pod1">
-            <div class="tap_coast" id="tap_coast_id">+ 3<img src="coin.png"></div>
+            <div class="tap_coast" id="tap_coast_id">+ 3<img src="coin.png" alt="coin"></div>
             <div class="tap">за тап</div>
         </div>
 
 
         <div class="avatar_pod2">
-            <div class="next_lvl_coast" id="next_lvl_id">10<img src="coin.png"></div>
+            <div class="next_lvl_coast" id="next_lvl_id">10<img src="coin.png" alt="coin"></div>
             <div class="next_lvl">для апа</div>
         </div>
 
         <div class="avatar_pod3">
-            <div class="passive_coast" id="passive_coast_id">100<img src="coin.png"></div>
+            <div class="passive_coast" id="passive_coast_id">100<img src="coin.png" alt="coin"></div>
             <div class="passive">в час</div>
         </div>
     </div>
 
-    <div class="tap_coin">
-        <div class="tap_coins"><img src="coin.png">0</div>
+    <div class="farm_coin">
+        <div class="farm_coins"><img src="coin.png" alt="coin">0</div>
     </div>
 
-    <div class="progress-bar">
+    <div class="progress_bar">
         <div class="progress"></div>
     </div>
 
@@ -62,8 +55,8 @@
     </div>
 
     <div class="energy-info">
-        <span class="energy_tap"><img src="energy.png">4000/4000</span>
-        <button class="boost_button"><img src="boost.png">Буст</button>
+        <span class="energy_tap"><img src="energy.png" alt="energy">4000/4000</span>
+        <button class="boost_button"><img src="boost.png" alt="boost">Буст</button>
     </div>
 
     <div class="navigation-line">
