@@ -260,6 +260,7 @@ body, html {
     align-items: center;
     margin-left: 20%;
     margin-top: 8%;
+    display: none;
 }
 
 #image-button {
