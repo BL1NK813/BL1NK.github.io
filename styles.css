@@ -396,6 +396,8 @@ body, html {
     background-color: #000;
     color: white;
     padding: 10px 14px;
+    border: none;
+    cursor: pointer;
 }
 
 .coin {
