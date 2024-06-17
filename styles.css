@@ -260,6 +260,7 @@ body, html {
     align-items: center;
     margin-left: 20%;
     margin-top: 8%;
+    border: none;
 }
 
 #image-button {
@@ -267,11 +268,15 @@ body, html {
     height: 230px;
     background: url('coin.png') no-repeat center;
     background-size: contain;
+    border: none;
     transition: transform 0.1s ease-in-out;
+    outline: none;
+    box-shadow: none;
 }
 
 #image-button:active {
     transform: scale(0.9);
+    animation: pressAnimation 0.175s ease-in-out;
 }
 
 @keyframes pressAnimation {
@@ -287,10 +292,6 @@ body, html {
     100% {
         transform: scale(1);
     }
-}
-
-#image-button:active {
-    animation: pressAnimation 0.175s ease-in-out;
 }
 
 .energy-info {
