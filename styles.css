@@ -7,6 +7,7 @@
     -ms-user-select: none; /* Для поддержки веб-браузерами Internet Explorer/Edge */
     outline: none; /* Убираем обводку фокуса */
     box-shadow: none; /* Убираем тень */
+    border: none;
 }
 
 /*Страница загрузки и анимация*/
