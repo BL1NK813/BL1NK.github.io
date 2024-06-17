@@ -15,10 +15,10 @@
     width: 0;
     height: 10px;
     border-radius: 15px;
-    animation: progress 3s linear forwards;
+    animation: progresss 3s linear forwards;
 }
 
-@keyframes progress {
+@keyframes progresss {
     0% {
         width: 0.01%;
     }
@@ -233,9 +233,17 @@ body, html {
     margin-left: 10%;
     background-color: #ddd;
     border-radius: 10px;
-    align-items: center;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+    border-radius: 10px;
+    transition: width 0.5s ease;
 }
 
 .coin {

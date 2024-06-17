@@ -1,3 +1,5 @@
+/* Основной скрипт */
+
 document.addEventListener('DOMContentLoaded', function() {
     const dotsElement = document.getElementById('dots');
     let dotCount = 0;
@@ -13,14 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 000);
+    }, 2000); // Замените на нужное время в миллисекундах
 });
 
-let energyTap = 500; /*Энергия*/
-const energyTapMax = 500; /*Макс энергия*/
-const energyTapDecrement = 100; /*Сколько энергии отнимается*/
-let coinsProgress = 0; /*Хз че это*/
-const coinsIncrement = 3; /*Сколько монет прибавляется*/
+let currentProgress = 0;
+let energyTap = 500; /* Энергия */
+const energyTapMax = 500; /* Макс энергия */
+const energyTapDecrement = 10; /* Сколько энергии отнимается */
+let coinsProgress = 0; /* Количество монет */
+const coinsIncrement = 3; /* Сколько монет прибавляется */
+const coinsPerFullProgress = 10; /* Количество монет для 100% прогресса */
 
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('image-button');
@@ -48,6 +52,29 @@ function handleMouseDown(event) {
 
 function handleMouseUp() {
     isMouseDown = false;
+}
+
+// Функция для увеличения прогресса
+function increaseProgress() {
+    const progressElement = document.getElementById('progress');
+    const stagePodElement = document.getElementById('stage_pod_id');
+
+    if (energyTap >= energyTapDecrement && currentProgress < 100) {
+        energyTap -= energyTapDecrement;
+        coinsProgress += coinsIncrement;
+        updateEnergyDisplay();
+        updateCoinsProgressDisplay();
+
+        // Пересчитываем прогресс на основе количества монет
+        currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
+        progressElement.style.width = currentProgress + '%';
+
+        // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
+        if (currentProgress === coinsPerFullProgress) {
+            currentProgress = 0;
+            stagePodElement.textContent = parseInt(stagePodElement.textContent) + 1;
+        }
+    }
 }
 
 // Функция для обработки нажатия на кнопку
@@ -107,4 +134,3 @@ function showCoinNotification(message, x, y) {
         notification.remove();
     }, 1000);
 }
-

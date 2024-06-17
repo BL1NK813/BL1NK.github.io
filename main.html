@@ -16,20 +16,17 @@
 </div>
 
 <div class="container" style="display: none">
-
     <div class="avatar">
         <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
         <span class="tg_name" id="tg_name_id">ABOBA1337</span>
         <span class="avatar2"><img src="main.png" alt="main"></span>
     </div>
 
-
     <div class="avatar_pod">
         <div class="avatar_pod1">
             <div class="tap_coast" id="tap_coast_id">+ 3<img src="coin.png" alt="coin"></div>
             <div class="tap">за тап</div>
         </div>
-
 
         <div class="avatar_pod2">
             <div class="next_lvl_coast" id="next_lvl_id">10<img src="coin.png" alt="coin"></div>
@@ -44,14 +41,18 @@
 
     <div class="farm_coin">
         <div class="farm_coins"><img src="coin.png" alt="coin">0</div>
+
     </div>
 
+    <div class="stage">
+        <div class="stage_pod" id="stage_pod_id">0</div>
+    </div>
     <div class="progress_bar">
-        <div class="progress"></div>
+        <div class="progress" id="progress"></div>
     </div>
 
     <div class="coin">
-        <button id="image-button"></button>
+        <button id="image-button" onclick="increaseProgress()"></button>
     </div>
 
     <div class="energy-info">
@@ -68,5 +69,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>
