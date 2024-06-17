@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3500);
+    }, 500);
 
     let currentProgress = 0;
     let energyTap = 500; /* Энергия */
@@ -48,14 +48,21 @@ document.addEventListener('DOMContentLoaded', function() {
         button.style.webkitTransform = 'scale(1)';
     }
 
+    // Устанавливаем интервал для восстановления энергии каждую секунду
+    setInterval(restoreEnergy, 1030);
+
+    // Устанавливаем интервал для пассивного увеличения монет каждую секунду
+    setInterval(increaseFarmCoinsPassively, 36000);
+
     function handleClick(event) {
-        if (!isClickHandled && energyTap >= energyTapDecrement) {
+        if (isMouseDown && !isClickHandled && energyTap >= energyTapDecrement) {
             isClickHandled = true; // Устанавливаем флаг обработки клика
 
             energyTap -= energyTapDecrement;
             coinsProgress += coinsIncrement;
             updateEnergyDisplay();
             updateCoinsProgressDisplay();
+            updateFarmCoinsDisplay();
 
             // Получаем координаты клика относительно .coin
             const rect = event.currentTarget.getBoundingClientRect();
@@ -70,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
                 isClickHandled = false;
-            }, 200);
+            }, 100);
         }
 
         if (isMouseDown) {
@@ -79,9 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function increaseProgress() {
-        const progressElement = document.getElementById('progress');
         const stagePodElement1 = document.getElementById('stage_pod_id1');
         const stagePodElement2 = document.getElementById('stage_pod_id2');
+        const progressElement = document.getElementById('progress');
+
 
         // Пересчитываем прогресс на основе количества монет
         currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
@@ -90,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
         if (currentProgress >= 100) {
             currentProgress = 0;
-            coinsProgress = 0; // Сбрасываем прогресс монет
+            progressElement.style.width = 0 + '%';
             stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent) + 1}/10`;
             stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent) + 1}/10`;
         }
@@ -99,6 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
         stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent.split('/')[0])}/10`;
         stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
     }
+
+    setInterval(() => {
+        if (isMouseDown) {
+            handleClick(); // Вызываем handleClick каждую секунду при удержании кнопки
+        }
+    }, 1000);
 
     function restoreEnergy() {
         if (energyTap < energyTapMax) {
@@ -125,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const coinsProgressDisplay = document.querySelector('.farm_coins');
         coinsProgressDisplay.innerHTML = `<img src="coin.png" alt="coin">${coinsProgress}`;
     }
+
 
     function updateFarmCoinsDisplay() {
         const farmCoinsElement = document.getElementById('farm_coins_id');

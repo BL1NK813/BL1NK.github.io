@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Проверка на гея</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .image-container {
+            display: none;
+        }
+        .text-container {
+            display: none;
+        }
+        @media only screen and (min-width: 768px) {
+            .image-container {
+                display: block;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .text-container {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="image-container">
+        <img src="Qadam.png" alt="Qadam_png">
+        <p>If you are on mobile, you will be redirected to <a href="https://bl1nk813.github.io/main">Qadam-бот</a></p>
+    </div>
+</div>
+
+<script>
+    // JavaScript redirect for mobile devices
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = 'https://bl1nk813.github.io/main';
+    }
+</script>
+</body>
+</html>
