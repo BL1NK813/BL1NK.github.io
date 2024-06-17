@@ -15,7 +15,7 @@
     width: 0;
     height: 10px;
     border-radius: 15px;
-    animation: progresss 3s linear forwards;
+    animation: progresss 3.5s linear forwards;
 }
 
 @keyframes progresss {
@@ -98,14 +98,14 @@ body, html {
     height: 10%;
     align-items: center;
     display: flex;
-    margin: -3% 5% 5%;
+    margin: -3% 5% 3%;
     justify-content: space-around;
 }
 
 .avatar_pod1 {
     border-radius: 3px 3px 10px 10px;
     background-color: #000;
-    width: 25%;
+    width: 29%;
     height: 70%;
     padding: 1%;
     font-size: 100%;
@@ -134,7 +134,7 @@ body, html {
 .avatar_pod2 {
     border-radius: 3px 3px 10px 10px;
     background-color: #000;
-    width: 25%;
+    width: 29%;
     height: 70%;
     padding: 1%;
     font-size: 100%;
@@ -164,7 +164,7 @@ body, html {
 .avatar_pod3 {
     border-radius: 3px 3px 10px 10px;
     background-color: #000;
-    width: 25%;
+    width: 29%;
     height: 70%;
     padding: 1%;
     font-size: 100%;
@@ -191,8 +191,6 @@ body, html {
     height: 15%;
 }
 
-
-
 .progress_coin {
     margin-top: 2%;
 }
@@ -205,7 +203,6 @@ body, html {
     border-radius: 6px;
     width: 100%;
     height: 10%;
-    margin-bottom: 3%;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -222,10 +219,19 @@ body, html {
     justify-content: center;
 }
 
+.stage{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
 
+}
+.stage_pod1, .stage_pod2{
+    margin-bottom: 2%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 
-
-
+}
 
 .progress_bar {
     width: 80%;
@@ -252,7 +258,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10%;
+    margin-left: 20%;
+    margin-top: 8%;
 }
 
 #image-button {
@@ -287,17 +294,11 @@ body, html {
     animation: pressAnimation 0.175s ease-in-out;
 }
 
-
-
-
-
-
-
 .energy-info {
-    margin: 2%;
     border-radius: 6px;
     width: 90%;
     height: 10%;
+    margin-top: 1%;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -305,16 +306,8 @@ body, html {
     align-self: center;
 }
 
-.energy-info img {
-    width: 15%;
-    height: 15%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
 .energy_tap{
-    margin-left: 2%;
+    margin-left: 6%;
     width: 30%;
     border: none;
     font-size: 130%;
@@ -336,7 +329,7 @@ body, html {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-left: 35%;
+    margin-left: 40%;
     font-size: 110%;
     border: none;
     background-color: rgba(0, 0, 0, 0);
@@ -350,22 +343,14 @@ body, html {
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
 .navigation {
+    width: 90%;
+    height: 23%;
     padding: 2%;
-    width: 100%;
-    height: 25%;
-    max-width: 350px;
+    margin-left: 3%;
     display: flex;
-    justify-content: space-around;
+    text-align: center;
+    justify-content: space-between;
     background-color: #000;
     border-radius: 6px;
 }
@@ -387,10 +372,11 @@ body, html {
 
 /*}*/
 .navigation-line{
-    width: 85%;
-    height: 25%;
+    width: 100%;
+    height: 23%;
     display: flex;
-    justify-content: space-around;
+    text-align: center;
+    justify-content: space-between;
     border-radius: 6px;
     margin-top: 7px;
 }
