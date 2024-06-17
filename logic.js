@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3500);
+    }, 00);
 
     let currentProgress = 0;
     let energyTap = 500; /* Энергия */

@@ -7,7 +7,6 @@
     -ms-user-select: none; /* Для поддержки веб-браузерами Internet Explorer/Edge */
     outline: none; /* Убираем обводку фокуса */
     box-shadow: none; /* Убираем тень */
-    border: none;
 }
 
 /*Страница загрузки и анимация*/
@@ -287,8 +286,7 @@ body, html {
 }
 
 #image-button:active {
-    transform: scale(0.9);
-    animation: pressAnimation 0.175s ease-in-out;
+    transform: scale(0.1);
 }
 
 @keyframes pressAnimation {
