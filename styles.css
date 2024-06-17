@@ -7,6 +7,9 @@
     background-color: #fff;
     top: -5%;
     transform: translateY(50%);
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 .progress_few1 .color {
@@ -16,6 +19,9 @@
     height: 10px;
     border-radius: 15px;
     animation: progresss 3.5s linear forwards;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 @keyframes progresss {
@@ -35,16 +41,25 @@
     width: 100%;
     color: #fff;
     text-align: center;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 .loading_text {
     top: 500%;
     font-size: 23px;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 .loading_subtext {
     top: 1200%;
     font-size: 19px;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 /*Сама страница*/
@@ -58,6 +73,9 @@ body, html {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a;
     color: #f0f0f0;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 .container {
@@ -385,7 +403,6 @@ body, html {
     background-color: #000;
     color: white;
     padding: 10px 14px;
-    border: none;
     cursor: pointer;
 }
 
