@@ -260,7 +260,8 @@ body, html {
     align-items: center;
     margin-left: 20%;
     margin-top: 8%;
-    display: none;
+    border-radius: 30px;
+    border-color: #fff;
 }
 
 #image-button {
@@ -293,7 +294,6 @@ body, html {
 
 #image-button:active {
     animation: pressAnimation 0.175s ease-in-out;
-    -webkit-animation: pressAnimation 0.175s ease-in-out;
 }
 
 .energy-info {

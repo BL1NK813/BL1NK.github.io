@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3500); // Замените на нужное время в миллисекундах
+    }, 3500);
 
     let currentProgress = 0;
     let energyTap = 500; /* Энергия */
@@ -24,37 +24,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
 
     const button = document.getElementById('image-button');
+    let isMouseDown = false;
+    let isClickHandled = false; // Флаг для предотвращения двойного нажатия
 
     // Обработка нажатия мыши
     button.addEventListener('mousedown', handleMouseDown);
+    button.addEventListener('touchstart', handleMouseDown); // Для сенсорных экранов
 
     // Обработка отпускания мыши
     button.addEventListener('mouseup', handleMouseUp);
-
-    // Устанавливаем интервал для восстановления энергии каждую секунду
-    setInterval(restoreEnergy, 1030);
-
-    // Устанавливаем интервал для пассивного увеличения монет каждую секунду
-    setInterval(increaseFarmCoinsPassively, 36000);
-
-    // Инициализируем начальное отображение энергии и прогресса монет
-    updateEnergyDisplay();
-    updateCoinsProgressDisplay();
-    updateFarmCoinsDisplay();
-
-    let isMouseDown = false;
+    button.addEventListener('touchend', handleMouseUp); // Для сенсорных экранов
 
     function handleMouseDown(event) {
         isMouseDown = true;
+        button.style.transform = 'scale(0.9)';
+        button.style.webkitTransform = 'scale(0.9)';
         handleClick(event);
     }
 
     function handleMouseUp() {
         isMouseDown = false;
+        button.style.transform = 'scale(1)';
+        button.style.webkitTransform = 'scale(1)';
     }
 
     function handleClick(event) {
-        if (energyTap >= energyTapDecrement) {
+        if (!isClickHandled && energyTap >= energyTapDecrement) {
+            isClickHandled = true; // Устанавливаем флаг обработки клика
+
             energyTap -= energyTapDecrement;
             coinsProgress += coinsIncrement;
             updateEnergyDisplay();
@@ -69,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Увеличиваем прогресс
             increaseProgress();
+
+            // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
+            setTimeout(() => {
+                isClickHandled = false;
+            }, 200);
         }
 
         if (isMouseDown) {
