@@ -263,30 +263,22 @@ body, html {
     transition: width 0.5s ease;
 }
 
-.coin {
+.coin_button {
     width: 230px;
     height: 230px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    background: url('dfd.png') no-repeat center;
+    background-size: contain;
     margin-left: 20%;
     margin-top: 8%;
     border: none;
-}
-
-#image-button {
-    width: 230px;
-    height: 230px;
-    background: url('coin.png') no-repeat center;
-    background-size: contain;
-    border: none;
-    transition: transform 0.1s ease-in-out;
     outline: none;
     box-shadow: none;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-#image-button:active {
-    transform: scale(0.1);
+.coin_button:active {
+    transform: rotateX(5deg) rotateY(5deg);
 }
 
 @keyframes pressAnimation {
@@ -396,13 +388,12 @@ body, html {
     color: white;
     padding: 10px 14px;
     border: none;
-    cursor: pointer;
 }
 
-.coin {
+/*.coin {
     position: relative;
     display: inline-block;
-}
+}*/
 
 .coin-notification {
     position: absolute;

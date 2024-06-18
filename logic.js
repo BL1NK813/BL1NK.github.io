@@ -1,3 +1,35 @@
+// Функция для увеличения прогресса
+function increaseProgress() {
+    console.log("Increasing progress");
+    const stagePodElement1 = document.getElementById('stage_pod_id1');
+    const stagePodElement2 = document.getElementById('stage_pod_id2');
+    const progressElement = document.getElementById('progress');
+
+    // Пересчитываем прогресс на основе количества монет
+    currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
+    progressElement.style.width = currentProgress + '%';
+    console.log("Current progress:", currentProgress);
+
+    // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
+    if (currentProgress >= 100) {
+        currentProgress = 0;
+        progressElement.style.width = 0 + '%';
+        stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent) + 1}/10`;
+        stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent) + 1}/10`;
+        console.log("Progress reset to 0 and stage incremented");
+    }
+
+    // Обновляем отображение прогресса
+    stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent.split('/')[0])}/10`;
+    stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
+}
+
+let currentProgress = 0;
+const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
+let coinsProgress = 0; /* Количество монет */
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const dotsElement = document.getElementById('dots');
     let dotCount = 0;
@@ -13,19 +45,47 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 00);
+    }, 3500);
 
-    let currentProgress = 0;
     let energyTap = 500; /* Энергия */
-    const energyTapMax = 500; /* Макс энергия */
-    const energyTapDecrement = 10; /* Сколько энергии отнимается */
-    let coinsProgress = 0; /* Количество монет */
-    const coinsIncrement = 3; /* Сколько монет прибавляется */
-    const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
-
-    const button = document.getElementById('image-button');
     let isMouseDown = false;
     let isClickHandled = false; // Флаг для предотвращения двойного нажатия
+
+    const energyTapMax = 500; /* Макс энергия */
+    const energyTapDecrement = 9; /* Сколько энергии отнимается */
+    const coinsIncrement = 3; /* Сколько монет прибавляется */
+    const coinsInSecond = 100;
+
+
+
+    const button = document.querySelector('.coin_button');
+
+    button.addEventListener('mousedown', function(event) {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+
+        button.style.transition = 'transform 0.2s ease';
+        requestAnimationFrame(() => {
+            button.style.transform = `rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+        });
+    });
+
+    button.addEventListener('mouseup', function() {
+        button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        requestAnimationFrame(() => {
+            button.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    });
+
+    button.addEventListener('mouseout', function() {
+        button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        requestAnimationFrame(() => {
+            button.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    });
+
+
 
     // Обработка нажатия мыши
     button.addEventListener('mousedown', handleMouseDown);
@@ -64,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCoinsProgressDisplay();
             updateFarmCoinsDisplay();
 
-            // Получаем координаты клика относительно .coin
-            const rect = event.currentTarget.getBoundingClientRect();
+            // Получаем координаты клика относительно целевого элемента (event.target)
+            const rect = event.target.getBoundingClientRect();
             const posX = event.clientX - rect.left;
             const posY = event.clientY - rect.top;
 
@@ -85,28 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function increaseProgress() {
-        const stagePodElement1 = document.getElementById('stage_pod_id1');
-        const stagePodElement2 = document.getElementById('stage_pod_id2');
-        const progressElement = document.getElementById('progress');
-
-
-        // Пересчитываем прогресс на основе количества монет
-        currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
-        progressElement.style.width = currentProgress + '%';
-
-        // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
-        if (currentProgress >= 100) {
-            currentProgress = 0;
-            progressElement.style.width = 0 + '%';
-            stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent) + 1}/10`;
-            stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent) + 1}/10`;
-        }
-
-        // Обновляем отображение прогресса
-        stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent.split('/')[0])}/10`;
-        stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
-    }
 
     setInterval(() => {
         if (isMouseDown) {
@@ -116,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function restoreEnergy() {
         if (energyTap < energyTapMax) {
-            energyTap += 1; // Скорость восстановления энергии
+            energyTap += Math.ceil(((coinsInSecond/60)/60)); // Скорость восстановления энергии
             if (energyTap > energyTapMax) {
                 energyTap = energyTapMax; // Предотвращаем превышение максимума
             }
