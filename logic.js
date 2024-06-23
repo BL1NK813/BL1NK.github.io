@@ -75,12 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let energyTap = 500; /* Энергия */
     let isMouseDown = false;
-
     const energyTapMax = 500; /* Макс энергия */
     const energyTapDecrement = 9; /* Сколько энергии отнимается */
     const coinsIncrement = 3; /* Сколько монет прибавляется */
     const coinsInSecond = 100;
-
     const button = document.querySelector('.coin_button');
 
     button.addEventListener('mousedown', function(event) {
@@ -90,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         button.style.transition = 'transform 0.2s ease';
         requestAnimationFrame(() => {
-            button.style.transform = `rotateX(${-y / 5}deg) rotateY(${x / 5}deg) scale(0.9)`;
+            button.style.transform = `rotateX(${-y / 1.1}deg) rotateY(${x / 1.1}deg) scale(0.9)`;
         });
     });
 
@@ -141,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.style.transform = 'rotateX(0deg) rotateY(0deg)';
     }, 50);
 
-
     // Устанавливаем интервал для восстановления энергии каждую секунду
     setInterval(restoreEnergy, 1030);
 
@@ -150,15 +147,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleClick(event) {
         if (isMouseDown && energyTap >= energyTapDecrement) {
-
             energyTap -= energyTapDecrement;
             coinsProgress += coinsIncrement;
             updateEnergyDisplay();
             updateCoinsProgressDisplay();
             updateFarmCoinsDisplay();
             showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
-
-            // Увеличиваем прогресс
             increaseProgress();
         }
     }
