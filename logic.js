@@ -1,5 +1,5 @@
 let tg = window.Telegram.WebApp;
-tg.expand();
+tg.expand(2000);
 
 document.addEventListener('DOMContentLoaded', function() {
     const navButtons = document.querySelectorAll('.nav-button');
