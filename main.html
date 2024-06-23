@@ -7,6 +7,7 @@
     <link rel="icon" href="main.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <script src="logic.js" defer></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 
@@ -18,13 +19,12 @@
 </div>
 
 <div class="container" style="display: none">
+    <div class="avatar">
+        <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
+        <span class="tg_name" id="tg_name_id">ABOBA1337</span>
+        <span class="avatar2"><img src="main.png" alt="main"></span>
+    </div>
     <div class="content">
-        <div class="avatar">
-            <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
-            <span class="tg_name" id="tg_name_id">ABOBA1337</span>
-            <span class="avatar2"><img src="main.png" alt="main"></span>
-        </div>
-
         <div class="nav-content" id="main">
             <div class="avatar_pod">
                 <div class="avatar_pod1">
@@ -65,22 +65,26 @@
 
 
         <div class="nav-content" id="tasks">
+            <div class="tasks"></div>
             <h1>Задачи</h1>
+            <div class="list-tasks"></div>
+
 
         </div>
+
         <div class="nav-content" id="friends">
             <h1>Друзья</h1>
-
         </div>
+
         <div class="nav-content" id="upgrades">
             <h1>Улучшения</h1>
+        </div>
 
-        </div>
-        <div class="navigation">
-            <button class="nav-button" data-tab="main">Главная</button>
-            <button class="nav-button" data-tab="tasks">Задачи</button>
-            <button class="nav-button" data-tab="friends">Друзья</button>
-            <button class="nav-button" data-tab="upgrades">Улучшения</button>
-        </div>
+    </div>
+    <div class="navigation">
+        <button class="nav-button" data-tab="main">Главная</button>
+        <button class="nav-button" data-tab="tasks">Задачи</button>
+        <button class="nav-button" data-tab="friends">Друзья</button>
+        <button class="nav-button" data-tab="upgrades">Улучшения</button>
     </div>
 </div>
