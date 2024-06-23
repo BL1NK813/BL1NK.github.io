@@ -1,8 +1,8 @@
 let tg = window.Telegram.WebApp;
-tg.expand();
+tg.expand(2000);
 setTimeout(function() {
-        tg.expand();
-    }, 2000);
+    tg.expand();
+}, 2000);
 
 document.addEventListener('DOMContentLoaded', function() {
     const navButtons = document.querySelectorAll('.nav-button');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3500);
+    }, 1800);
 
     let energyTap = 500; /* Энергия */
     let isMouseDown = false;
