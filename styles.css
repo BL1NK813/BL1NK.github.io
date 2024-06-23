@@ -30,7 +30,7 @@
     animation: progresss 1.8s linear forwards;
 }
 
-@keyframes aprogresss {
+@keyframes progresss {
     0% {
         width: 0.01%;
     }
