@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="logic.js" defer></script>
 </head>
+
+
 <body>
 <div id="progress_few" class="progress_few1">
     <div class="color"></div>
@@ -16,54 +18,69 @@
 </div>
 
 <div class="container" style="display: none">
-    <div class="avatar">
-        <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
-        <span class="tg_name" id="tg_name_id">ABOBA1337</span>
-        <span class="avatar2"><img src="main.png" alt="main"></span>
-    </div>
-
-    <div class="avatar_pod">
-        <div class="avatar_pod1">
-            <div class="tap_coast" id="tap_coast_id">+ 3<img src="coin.png" alt="coin"></div>
-            <div class="tap">за тап</div>
+    <div class="content">
+        <div class="avatar">
+            <span class="avatar1" id="avatar1_id"><img src="avatar.png" alt=""></span>
+            <span class="tg_name" id="tg_name_id">ABOBA1337</span>
+            <span class="avatar2"><img src="main.png" alt="main"></span>
         </div>
-        <div class="avatar_pod2">
-            <div class="next_lvl_coast" id="next_lvl_id">10<img src="coin.png" alt="coin"></div>
-            <div class="next_lvl">для апа</div>
+
+        <div class="nav-content" id="main">
+            <div class="avatar_pod">
+                <div class="avatar_pod1">
+                    <div class="tap_coast" id="tap_coast_id">+ 3<img src="coin.png" alt="coin"></div>
+                    <div class="tap">за тап</div>
+                </div>
+                <div class="avatar_pod2">
+                    <div class="next_lvl_coast" id="next_lvl_id">10<img src="coin.png" alt="coin"></div>
+                    <div class="next_lvl">для апа</div>
+                </div>
+                <div class="avatar_pod3">
+                    <div class="passive_coast" id="passive_coast_id">100<img src="coin.png" alt="coin"></div>
+                    <div class="passive">в час</div>
+                </div>
+            </div>
+
+            <div class="farm_coin">
+                <div class="farm_coins" id="farm_coins_id"><img src="coin.png" alt="coin">0</div>
+            </div>
+
+            <div class="stage">
+                <div class="stage_pod1" id="stage_pod_id1">0/10</div>
+                <div class="stage_pod2" id="stage_pod_id2">0/10</div>
+            </div>
+            <div class="progress_bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <div class="coin">
+                <button class="coin_button" id="coin-button" onclick="increaseProgress()"></button>
+            </div>
+
+            <div class="energy-info">
+                <span class="energy_tap"><img src="energy.png" alt="energy">4000/4000</span>
+                <button class="boost_button"><img src="boost.png" alt="boost">Буст</button>
+            </div>
         </div>
-        <div class="avatar_pod3">
-            <div class="passive_coast" id="passive_coast_id">100<img src="coin.png" alt="coin"></div>
-            <div class="passive">в час</div>
+
+
+        <div class="nav-content" id="tasks">
+            <h1>Задачи</h1>
+
         </div>
-    </div>
+        <div class="nav-content" id="friends">
+            <h1>Друзья</h1>
 
-    <div class="farm_coin">
-        <div class="farm_coins" id="farm_coins_id"><img src="coin.png" alt="coin">0</div>
-    </div>
+        </div>
+        <div class="nav-content" id="upgrades">
+            <h1>Улучшения</h1>
 
-    <div class="stage">
-        <div class="stage_pod1" id="stage_pod_id1">0/10</div>
-        <div class="stage_pod2" id="stage_pod_id2">0/10</div>
-    </div>
-    <div class="progress_bar">
-        <div class="progress" id="progress"></div>
-    </div>
-
-    <div class="coin">
-        <button class="coin_button" id="coin-button" onclick="increaseProgress()"></button>
-    </div>
-
-    <div class="energy-info">
-        <span class="energy_tap"><img src="energy.png" alt="energy">4000/4000</span>
-        <button class="boost_button"><img src="boost.png" alt="boost">Буст</button>
-    </div>
-
-    <div class="navigation-line">
+        </div>
         <div class="navigation">
-            <button>Главная</button>
-            <button>Задачи</button>
-            <button>Друзья</button>
-            <button>Улучшения</button>
+            <button class="nav-button" data-tab="main">Главная</button>
+            <button class="nav-button" data-tab="tasks">Задачи</button>
+            <button class="nav-button" data-tab="friends">Друзья</button>
+            <button class="nav-button" data-tab="upgrades">Улучшения</button>
         </div>
     </div>
 </div>

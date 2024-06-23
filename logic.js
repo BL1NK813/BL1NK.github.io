@@ -1,3 +1,26 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-button');
+    const navContents = document.querySelectorAll('.nav-content');
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+
+            // Удаляем класс active со всех кнопок и контента
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            navContents.forEach(content => content.classList.remove('active'));
+
+            // Добавляем класс active к текущей кнопке и контенту
+            button.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+
+    // Устанавливаем активную первую вкладку по умолчанию
+    navButtons[0].classList.add('active');
+    navContents[0].classList.add('active');
+});
+
 /*До document.addEventListener('DOMContentLoaded', function() { не трогай. Обработчик нажатия монетки работать не будет*/
 let currentProgress = 0;
 const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
@@ -5,7 +28,6 @@ let coinsProgress = 0; /* Количество монет */
 
 // Функция для увеличения прогресса
 function increaseProgress() {
-    console.log("Increasing progress");
     const stagePodElement1 = document.getElementById('stage_pod_id1');
     const stagePodElement2 = document.getElementById('stage_pod_id2');
     const progressElement = document.getElementById('progress');
@@ -13,7 +35,6 @@ function increaseProgress() {
     // Пересчитываем прогресс на основе количества монет
     currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
     progressElement.style.width = currentProgress + '%';
-    console.log("Current progress:", currentProgress);
 
     // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
     if (currentProgress >= 100) {
@@ -21,7 +42,6 @@ function increaseProgress() {
         progressElement.style.width = 0 + '%';
         stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent) + 1}/10`;
         stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent) + 1}/10`;
-        console.log("Progress reset to 0 and stage incremented");
     }
 
     // Обновляем отображение прогресса
@@ -29,6 +49,7 @@ function increaseProgress() {
     stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
 }
 
+/*Предзагрузка страницы*/
 document.addEventListener('DOMContentLoaded', function() {
     const dotsElement = document.getElementById('dots');
     let dotCount = 0;
@@ -44,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 3500);
+    }, 500);
 
     let energyTap = 500; /* Энергия */
     let isMouseDown = false;
@@ -82,8 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-
     // Обработка нажатия мыши
     button.addEventListener('mousedown', handleMouseDown);
     button.addEventListener('touchstart', handleMouseDown); // Для сенсорных экранов
@@ -120,13 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateEnergyDisplay();
             updateCoinsProgressDisplay();
             updateFarmCoinsDisplay();
-
-            // Получаем координаты клика относительно целевого элемента (event.target)
-            const rect = event.target.getBoundingClientRect();
-            const posX = event.clientX - rect.left;
-            const posY = event.clientY - rect.top;
-
-            showCoinNotification(`+${coinsIncrement} монет`, posX, posY);
+            showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
 
             // Увеличиваем прогресс
             increaseProgress();
@@ -134,20 +147,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
                 isClickHandled = false;
-            }, 100);
+            }, 190);
         }
 
         if (isMouseDown) {
             setTimeout(() => handleClick(event), 100);
         }
     }
-
-
-    setInterval(() => {
-        if (isMouseDown) {
-            handleClick(); // Вызываем handleClick каждую секунду при удержании кнопки
-        }
-    }, 1000);
 
     function restoreEnergy() {
         if (energyTap < energyTapMax) {
@@ -175,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
         coinsProgressDisplay.innerHTML = `<img src="coin.png" alt="coin">${coinsProgress}`;
     }
 
-
     function updateFarmCoinsDisplay() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
         farmCoinsElement.innerHTML = `<img src="coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
@@ -188,8 +193,16 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.style.left = `${x}px`;
         notification.style.top = `${y}px`;
         document.body.appendChild(notification);
+
+        // Анимация появления
+        requestAnimationFrame(() => {
+            notification.style.opacity = '1';
+        });
+
+        // Удаление уведомления через 1 секунду
         setTimeout(() => {
-            notification.remove();
-        }, 1000);
+            notification.style.opacity = '0';
+            setTimeout(() => notification.remove(), 300);
+        }, 500);
     }
 });
