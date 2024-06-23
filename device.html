@@ -4,45 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Device Check</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        img {
-            width: 500px;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .text-container {
-            display: none;
-        }
-        @media only screen and (max-width: 767px) {
-            .text-container {
-                display: block;
-            }
-            img {
-                display: none; /* скрываем изображение на мобильных устройствах */
-            }
-        }
-    </style>
 </head>
 <body>
-<img src="Qadam.png" alt="Qadam_png">
-<div class="text-container">
-    <p>If you are on mobile, you will be redirected to <a href="https://bl1nk813.github.io/main">Qadam-бот</a>.</p>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/isMobile/1.0.1/isMobile.min.js"></script>
 <script>
-    // JavaScript redirect using isMobile.js
-    if (isMobile.any()) {
-        window.location.href = 'https://bl1nk813.github.io/main';
+    function isMobileDevice() {
+        return /Mobi|Android/i.test(navigator.userAgent);
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!isMobileDevice()) {
+            // Если устройство не мобильное, отображаем сообщение или QR-код
+            document.body.innerHTML = `
+                    <div style="text-align: center; margin-top: 20%;">
+                        <p>Play on your mobile</p>
+                        <img src="Qadam.png" alt="QR Code" style="width: 200px; height: 200px;">
+                        <p>@your_bot_username</p>
+                    </div>
+                `;
+        } else {
+            window.location.href = 'https://bl1nk813.github.io/main';
+        }
+    });
 </script>
 </body>
 </html>
