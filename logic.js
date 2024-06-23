@@ -71,11 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
         document.getElementById('progress_few').style.display = 'none';
         document.querySelector('.container').style.display = 'block';
-    }, 1800);
+    }, 100);
 
     let energyTap = 500; /* Энергия */
     let isMouseDown = false;
-    let isClickHandled = false; // Флаг для предотвращения двойного нажатия
 
     const energyTapMax = 500; /* Макс энергия */
     const energyTapDecrement = 9; /* Сколько энергии отнимается */
@@ -140,9 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setTimeout(() => {
         button.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    }, 400);
-
-
+    }, 50);
 
 
     // Устанавливаем интервал для восстановления энергии каждую секунду
@@ -152,8 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(increaseFarmCoinsPassively, 36000);
 
     function handleClick(event) {
-        if (isMouseDown && !isClickHandled && energyTap >= energyTapDecrement) {
-            isClickHandled = true; // Устанавливаем флаг обработки клика
+        if (isMouseDown && energyTap >= energyTapDecrement) {
 
             energyTap -= energyTapDecrement;
             coinsProgress += coinsIncrement;
@@ -164,15 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Увеличиваем прогресс
             increaseProgress();
-
-            // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
-            setTimeout(() => {
-                isClickHandled = false;
-            }, 190);
-        }
-
-        if (isMouseDown) {
-            setTimeout(() => handleClick(event), 100);
         }
     }
 
