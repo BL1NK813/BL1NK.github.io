@@ -1,3 +1,8 @@
+/*До document.addEventListener('DOMContentLoaded', function() { не трогай. Обработчик нажатия монетки работать не будет*/
+let currentProgress = 0;
+const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
+let coinsProgress = 0; /* Количество монет */
+
 // Функция для увеличения прогресса
 function increaseProgress() {
     console.log("Increasing progress");
@@ -24,12 +29,6 @@ function increaseProgress() {
     stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
 }
 
-let currentProgress = 0;
-const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
-let coinsProgress = 0; /* Количество монет */
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const dotsElement = document.getElementById('dots');
     let dotCount = 0;
@@ -55,16 +54,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const energyTapDecrement = 9; /* Сколько энергии отнимается */
     const coinsIncrement = 3; /* Сколько монет прибавляется */
     const coinsInSecond = 100;
-
-    document.getElementById('coinButton').addEventListener('click', function(event) {
-    const x = event.clientX;
-    const y = event.clientY;
-    const coin = document.getElementById('coin');
-    coin.style.left = `${x}px`;
-    coin.style.top = `${y}px`;
-    coin.classList.add('animate');
-    setTimeout(() => coin.classList.remove('animate'), 1000); // длительность анимации в мс
-});
+
+    const button = document.querySelector('.coin_button');
+
+    button.addEventListener('mousedown', function(event) {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+
+        button.style.transition = 'transform 0.2s ease';
+        requestAnimationFrame(() => {
+            button.style.transform = `rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+        });
+    });
 
     button.addEventListener('mouseup', function() {
         button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
