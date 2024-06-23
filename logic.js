@@ -91,44 +91,59 @@ document.addEventListener('DOMContentLoaded', function() {
 
         button.style.transition = 'transform 0.2s ease';
         requestAnimationFrame(() => {
-            button.style.transform = `rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+            button.style.transform = `rotateX(${-y / 5}deg) rotateY(${x / 5}deg) scale(0.9)`;
         });
     });
 
     button.addEventListener('mouseup', function() {
         button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
         requestAnimationFrame(() => {
-            button.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            button.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
         });
     });
 
     button.addEventListener('mouseout', function() {
         button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
         requestAnimationFrame(() => {
-            button.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            button.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
         });
     });
 
-    // Обработка нажатия мыши
-    button.addEventListener('mousedown', handleMouseDown);
-    button.addEventListener('touchstart', handleMouseDown); // Для сенсорных экранов
+    button.addEventListener('touchstart', function(event) {
+        handleMouseDown(event.touches[0]);
+    }, { passive: true });
 
-    // Обработка отпускания мыши
-    button.addEventListener('mouseup', handleMouseUp);
-    button.addEventListener('touchend', handleMouseUp); // Для сенсорных экранов
+    button.addEventListener('touchend', function() {
+        handleMouseUp();
+    }, { passive: true });
 
     function handleMouseDown(event) {
         isMouseDown = true;
-        button.style.transform = 'scale(0.9)';
-        button.style.webkitTransform = 'scale(0.9)';
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
         handleClick(event);
+
+        button.style.transition = 'transform 0.2s ease';
+        requestAnimationFrame(() => {
+            button.style.transform = `rotateX(${-y / 5}deg) rotateY(${x / 5}deg) scale(0.9)`;
+        });
     }
 
     function handleMouseUp() {
         isMouseDown = false;
-        button.style.transform = 'scale(1)';
-        button.style.webkitTransform = 'scale(1)';
+        button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        requestAnimationFrame(() => {
+            button.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
     }
+
+    setTimeout(() => {
+        button.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    }, 400);
+
+
+
 
     // Устанавливаем интервал для восстановления энергии каждую секунду
     setInterval(restoreEnergy, 1030);
