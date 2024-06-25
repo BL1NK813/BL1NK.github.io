@@ -1,5 +1,7 @@
 let coinsProgress = 0;
 let currentProgress = 0;
+const coinsPerFullProgress = 100;
+
 
 // Функция для увеличения прогресса
 function increaseProgress() {
