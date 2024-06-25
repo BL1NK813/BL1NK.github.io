@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let energyTap = 500; /* Энергия */
+    let energyTap = 500;
     let isMouseDown = false;
     let isClickHandled = false; // Флаг для предотвращения двойного нажатия
-    const energyTapMax = 500; /* Макс энергия */
-    const energyTapDecrement = 9; /* Сколько энергии отнимается */
-    const coinsIncrement = 3; /* Сколько монет прибавляется */
+    const energyTapMax = 500;
+    const energyTapDecrement = 9;
+    const coinsIncrement = 3;
     const coinsInSecond = 100;
-    const button = document.querySelector('.coin_button');
 
+
+    // Устанавливаем интервал для восстановления энергии каждую секунду
+    setInterval(restoreEnergy, 1030);
+
+    // Устанавливаем интервал для пассивного увеличения монет каждую секунду
+    setInterval(increaseFarmCoinsPassively, 36000);
+
+
+    const button = document.querySelector('.coin_button');
     button.addEventListener('mousedown', function(event) {
         const rect = button.getBoundingClientRect();
         const x = event.clientX - rect.left - rect.width / 2;
@@ -54,34 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
         button.style.webkitTransform = 'scale(1)';
     }
 
-    // Устанавливаем интервал для восстановления энергии каждую секунду
-    setInterval(restoreEnergy, 1030);
-
-    // Устанавливаем интервал для пассивного увеличения монет каждую секунду
-    setInterval(increaseFarmCoinsPassively, 36000);
-
     function handleClick(event) {
         if (isMouseDown && !isClickHandled && energyTap >= energyTapDecrement) {
             isClickHandled = true; // Устанавливаем флаг обработки клика
-
             energyTap -= energyTapDecrement;
             coinsProgress += coinsIncrement;
             updateEnergyDisplay();
             updateCoinsProgressDisplay();
             updateFarmCoinsDisplay();
             showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
-
-            // Увеличиваем прогресс
             increaseProgress();
 
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
                 isClickHandled = false;
             }, 190);
-        }
-
-        if (isMouseDown) {
-            setTimeout(() => handleClick(event), 100);
         }
     }
 
@@ -98,21 +93,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function increaseFarmCoinsPassively() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
         const currentFarmCoins = parseInt(farmCoinsElement.textContent) || 0;
-        farmCoinsElement.innerHTML = `<img src="coin.png" alt="coin">${currentFarmCoins + 1}`;
+        farmCoinsElement.innerHTML = `<img src="dicpic/coin.png" alt="coin">${currentFarmCoins + 1}`;
     }
 
     function updateEnergyDisplay() {
         const energyDisplay = document.querySelector('.energy_tap');
-        energyDisplay.innerHTML = `<img src="energy.png" alt="coin">${energyTap}/${energyTapMax}`;
+        energyDisplay.innerHTML = `<img src="dicpic/energy.png" alt="coin">${energyTap}/${energyTapMax}`;
     }
 
     function updateCoinsProgressDisplay() {
         const coinsProgressDisplay = document.querySelector('.farm_coins');
-        coinsProgressDisplay.innerHTML = `<img src="coin.png" alt="coin">${coinsProgress}`;
+        coinsProgressDisplay.innerHTML = `<img src="dicpic/coin.png" alt="coin">${coinsProgress}`;
     }
 
     function updateFarmCoinsDisplay() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
-        farmCoinsElement.innerHTML = `<img src="coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
+        farmCoinsElement.innerHTML = `<img src="dicpic/coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
     }
 });

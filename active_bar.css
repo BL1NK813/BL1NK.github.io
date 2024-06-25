@@ -1,14 +1,13 @@
 .content{
-    height: 70%;
+    height: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .navigation {
     width: 90%;
-    height: 6%;
+    height: 5%;
     padding: 2%;
     margin-left: 3%;
     display: flex;
@@ -16,7 +15,6 @@
     background-color: #000;
     border-radius: 6px;
     justify-content: space-around;
-    margin-top: 8%;
 }
 
 .nav-button {
@@ -38,5 +36,4 @@
 
 .nav-content.active {
     display: block;
-
 }

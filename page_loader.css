@@ -14,7 +14,7 @@
     width: 0;
     height: 10px;
     border-radius: 15px;
-    animation: progresss 1.8s linear forwards;
+    animation: progresss 0.85s linear forwards;
 }
 
 @keyframes progresss {

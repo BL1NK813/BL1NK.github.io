@@ -1,15 +1,14 @@
 .stage{
+    margin-top: 1%;
     align-items: center;
     display: flex;
     justify-content: space-around;
-
 }
 .stage_pod1, .stage_pod2{
     margin-bottom: 2%;
     align-items: center;
     display: flex;
     justify-content: center;
-
 }
 
 .progress_bar {

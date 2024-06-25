@@ -7,6 +7,8 @@
     -ms-user-select: none; /* Для поддержки веб-браузерами Internet Explorer/Edge */
     outline: none; /* Убираем обводку фокуса */
     box-shadow: none; /* Убираем тень */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    touch-action: manipulation;
 }
 
 /*Сама страница*/
@@ -25,7 +27,7 @@ body, html {
 .container {
     width: 100vw;
     height: 100vh;
-    background-image: url('background.png');
+    background-image: url('dicpic/background.png');
     background-size: cover;
     background-origin: border-box;
     background-repeat: no-repeat;
@@ -183,14 +185,13 @@ body, html {
 }
 
 .coin_button {
-    width: 230px;
-    height: 230px;
+    width: 250px;
+    height: 250px;
     display: flex;
-    background: url('dfd.png') no-repeat center;
+    background: url('dicpic/dfd.png') no-repeat center;
     background-size: contain;
-    margin-left: 20%;
-    margin-top: 8%;
-    margin-bottom: 3%;
+    margin-left: 18.5%;
+    margin-top: 8.5%;
     border: none;
     outline: none;
     box-shadow: none;
