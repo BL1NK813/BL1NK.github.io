@@ -7,8 +7,6 @@
     -ms-user-select: none; /* Для поддержки веб-браузерами Internet Explorer/Edge */
     outline: none; /* Убираем обводку фокуса */
     box-shadow: none; /* Убираем тень */
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 /*Страница загрузки и анимация*/

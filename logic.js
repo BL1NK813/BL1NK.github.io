@@ -75,38 +75,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let energyTap = 500; /* Энергия */
     let isMouseDown = false;
+    let isClickHandled = false; // Флаг для предотвращения двойного нажатия
+
     const energyTapMax = 500; /* Макс энергия */
     const energyTapDecrement = 9; /* Сколько энергии отнимается */
     const coinsIncrement = 3; /* Сколько монет прибавляется */
     const coinsInSecond = 100;
-    let coinsProgress = 0; // example value
+
 
 
     const button = document.querySelector('.coin_button');
 
-
     button.addEventListener('mousedown', function(event) {
-        handleMouseDown(event);
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+
+        button.style.transition = 'transform 0.2s ease';
+        requestAnimationFrame(() => {
+            button.style.transform = `rotateX(${-y / 5}deg) rotateY(${x / 5}deg) scale(0.9)`;
+        });
     });
 
     button.addEventListener('mouseup', function() {
-        handleMouseUp();
+        button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        requestAnimationFrame(() => {
+            button.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
     });
 
     button.addEventListener('mouseout', function() {
-        handleMouseUp();
+        button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        requestAnimationFrame(() => {
+            button.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
     });
 
     button.addEventListener('touchstart', function(event) {
-        if (event.touches.length === 5) {
-            handleTouchDown(event);
-        }
+        handleMouseDown(event.touches[0]);
     }, { passive: true });
 
-    button.addEventListener('touchend', function(event) {
-        if (event.touches.length < 5) {
-            handleMouseUp();
-        }
+    button.addEventListener('touchend', function() {
+        handleMouseUp();
     }, { passive: true });
 
     function handleMouseDown(event) {
@@ -122,20 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function handleTouchDown(event) {
-        isMouseDown = true;
-        const rect = button.getBoundingClientRect();
-        const x = event.touches[0].clientX - rect.left - rect.width / 2;
-        const y = event.touches[0].clientY - rect.top - rect.height / 2;
-
-        button.style.transition = 'transform 0.2s ease';
-        requestAnimationFrame(() => {
-            button.style.transform = `rotateX(${-y / 5}deg) rotateY(${x / 5}deg) scale(0.9)`;
-        });
-
-        handleClick(event);
-    }
-
     function handleMouseUp() {
         isMouseDown = false;
         button.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
@@ -144,25 +140,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function handleClick(event) {
-        if (isMouseDown && energyTap >= energyTapDecrement) {
-            energyTap -= energyTapDecrement;
-            coinsProgress += coinsIncrement;
-            updateEnergyDisplay();
-            updateCoinsProgressDisplay();
-            updateFarmCoinsDisplay();
-            showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
-            increaseProgress();
-        }
-    }
-
-    function increaseProgress() {
-        // Increase progress logic here
-    }
-
     setTimeout(() => {
         button.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    }, 50);
+    }, 400);
+
+
 
 
     // Устанавливаем интервал для восстановления энергии каждую секунду
@@ -170,6 +152,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Устанавливаем интервал для пассивного увеличения монет каждую секунду
     setInterval(increaseFarmCoinsPassively, 36000);
+
+    function handleClick(event) {
+        if (isMouseDown && !isClickHandled && energyTap >= energyTapDecrement) {
+            isClickHandled = true; // Устанавливаем флаг обработки клика
+
+            energyTap -= energyTapDecrement;
+            coinsProgress += coinsIncrement;
+            updateEnergyDisplay();
+            updateCoinsProgressDisplay();
+            updateFarmCoinsDisplay();
+            showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
+
+            // Увеличиваем прогресс
+            increaseProgress();
+
+            // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
+            setTimeout(() => {
+                isClickHandled = false;
+            }, 190);
+        }
+
+        if (isMouseDown) {
+            setTimeout(() => handleClick(event), 100);
+        }
+    }
 
     function restoreEnergy() {
         if (energyTap < energyTapMax) {
