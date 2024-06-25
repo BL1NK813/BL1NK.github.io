@@ -395,32 +395,3 @@ body, html {
     display: block;
 
 }
-
-
-
-
-
-
-
-.coin-notification {
-    position: absolute;
-    color: #fff;
-    text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 17px;
-    font-weight: bold;
-    z-index: 1; /* Выше остальных элементов */
-    opacity: 0; /* Изначально делаем уведомление невидимым */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Плавная анимация появления */
-    pointer-events: none;
-}
-
-.coin:hover .coin-notification {
-    opacity: 1; /* При наведении делаем уведомление видимым */
-    transform: translate(-50%, -60%); /* Немного поднимаем уведомление */
-}
