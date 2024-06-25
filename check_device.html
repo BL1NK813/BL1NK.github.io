@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Check</title>
+    <style>
+        .hzhz {
+            background-image: url('dicpic/hz.png');
+            background-size: auto;
+            background-repeat: space;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    function isMobileDevice() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!isMobileDevice()) {
+            // Если устройство не мобильное, отображаем сообщение или QR-код
+            document.body.innerHTML = `
+                    <div class="hzhz">
+                    <div style="text-align: center; margin-top: 20%;">
+                        <p>Play on your mobile</p>
+                        <img src="dicpic/Qadam.png" alt="QR Code" style="width: 250px; height: 250px;">
+
+                        <p>@web3_easily_bot</p>
+                    </div>
+                    </div>
+                `;
+        } else {
+            window.location.href = 'https://bl1nk813.github.io/main';
+        }
+    });
+</script>
+</body>
+</html>
