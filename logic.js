@@ -1,61 +1,15 @@
+/*
 let tg = window.Telegram.WebApp;
 tg.expand(2000);
 setTimeout(function() {
     tg.expand();
 }, 2000);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-button');
-    const navContents = document.querySelectorAll('.nav-content');
-
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetTab = button.getAttribute('data-tab');
-
-            // Удаляем класс active со всех кнопок и контента
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            navContents.forEach(content => content.classList.remove('active'));
-
-            // Добавляем класс active к текущей кнопке и контенту
-            button.classList.add('active');
-            document.getElementById(targetTab).classList.add('active');
-        });
-    });
-
-    // Устанавливаем активную первую вкладку по умолчанию
-    navButtons[0].classList.add('active');
-    navContents[0].classList.add('active');
-});
-
-/*До document.addEventListener('DOMContentLoaded', function() { не трогай. Обработчик нажатия монетки работать не будет*/
+/!*До document.addEventListener('DOMContentLoaded', function() { не трогай. Обработчик нажатия монетки работать не будет*!/
 let currentProgress = 0;
-const coinsPerFullProgress = 100; /* Количество монет для 100% прогресса */
-let coinsProgress = 0; /* Количество монет */
+const coinsPerFullProgress = 100; /!* Количество монет для 100% прогресса *!/
 
-// Функция для увеличения прогресса
-function increaseProgress() {
-    const stagePodElement1 = document.getElementById('stage_pod_id1');
-    const stagePodElement2 = document.getElementById('stage_pod_id2');
-    const progressElement = document.getElementById('progress');
-
-    // Пересчитываем прогресс на основе количества монет
-    currentProgress = Math.floor((coinsProgress / coinsPerFullProgress) * 100);
-    progressElement.style.width = currentProgress + '%';
-
-    // Если достигнут 100% прогресса, сбрасываем и увеличиваем счетчик
-    if (currentProgress >= 100) {
-        currentProgress = 0;
-        progressElement.style.width = 0 + '%';
-        stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent) + 1}/10`;
-        stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent) + 1}/10`;
-    }
-
-    // Обновляем отображение прогресса
-    stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent.split('/')[0])}/10`;
-    stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
-}
-
-/*Предзагрузка страницы*/
+/!*Предзагрузка страницы*!/
 document.addEventListener('DOMContentLoaded', function() {
     const dotsElement = document.getElementById('dots');
     let dotCount = 0;
@@ -73,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.container').style.display = 'block';
     }, 100);
 
-    let energyTap = 500; /* Энергия */
+    let energyTap = 500; /!* Энергия *!/
     let isMouseDown = false;
     let isClickHandled = false; // Флаг для предотвращения двойного нажатия
 
-    const energyTapMax = 500; /* Макс энергия */
-    const energyTapDecrement = 9; /* Сколько энергии отнимается */
-    const coinsIncrement = 3; /* Сколько монет прибавляется */
+    const energyTapMax = 500; /!* Макс энергия *!/
+    const energyTapDecrement = 9; /!* Сколько энергии отнимается *!/
+    const coinsIncrement = 3; /!* Сколько монет прибавляется *!/
     const coinsInSecond = 100;
 
 
@@ -208,24 +162,5 @@ document.addEventListener('DOMContentLoaded', function() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
         farmCoinsElement.innerHTML = `<img src="coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
     }
-
-    function showCoinNotification(message, x, y) {
-        const notification = document.createElement('div');
-        notification.className = 'coin-notification';
-        notification.innerText = message;
-        notification.style.left = `${x}px`;
-        notification.style.top = `${y}px`;
-        document.body.appendChild(notification);
-
-        // Анимация появления
-        requestAnimationFrame(() => {
-            notification.style.opacity = '1';
-        });
-
-        // Удаление уведомления через 1 секунду
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => notification.remove(), 300);
-        }, 500);
-    }
 });
+*/

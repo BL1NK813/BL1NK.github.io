@@ -1,5 +1,7 @@
+let coinsProgress = 0;
 let currentProgress = 0;
 
+// Функция для увеличения прогресса
 function increaseProgress() {
     const stagePodElement1 = document.getElementById('stage_pod_id1');
     const stagePodElement2 = document.getElementById('stage_pod_id2');
@@ -21,4 +23,3 @@ function increaseProgress() {
     stagePodElement1.textContent = `${parseInt(stagePodElement1.textContent.split('/')[0])}/10`;
     stagePodElement2.textContent = `${parseInt(stagePodElement2.textContent.split('/')[0])}/10`;
 }
-

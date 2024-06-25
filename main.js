@@ -1,13 +1,12 @@
 const coinsPerFullProgress = 100;
-let coinsProgress = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
-    let energyTap = 500;
+    let energyTap = 500; /* Энергия */
     let isMouseDown = false;
     let isClickHandled = false; // Флаг для предотвращения двойного нажатия
-    const energyTapMax = 500;
-    const energyTapDecrement = 9;
-    const coinsIncrement = 3;
+    const energyTapMax = 500; /* Макс энергия */
+    const energyTapDecrement = 9; /* Сколько энергии отнимается */
+    const coinsIncrement = 3; /* Сколько монет прибавляется */
     const coinsInSecond = 100;
     const button = document.querySelector('.coin_button');
 
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
                 isClickHandled = false;
-            }, 100);
+            }, 190);
         }
 
         if (isMouseDown) {
@@ -119,4 +118,3 @@ document.addEventListener('DOMContentLoaded', function() {
         farmCoinsElement.innerHTML = `<img src="coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
     }
 });
-

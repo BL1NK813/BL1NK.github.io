@@ -17,4 +17,3 @@ function showCoinNotification(message, x, y) {
         setTimeout(() => notification.remove(), 300);
     }, 500);
 }
-
