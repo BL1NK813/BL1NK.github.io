@@ -1,0 +1,42 @@
+.content{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.navigation {
+    width: 90%;
+    height: 6%;
+    padding: 2%;
+    margin-left: 3%;
+    display: flex;
+    text-align: center;
+    background-color: #000;
+    border-radius: 6px;
+    justify-content: space-around;
+    margin-top: 8%;
+}
+
+.nav-button {
+    background-color: #000;
+    cursor: pointer;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+}
+
+.nav-button.active {
+    background-color: orangered;
+    border-radius: 6px;
+}
+
+.nav-content {
+    display: none;
+}
+
+.nav-content.active {
+    display: block;
+
+}

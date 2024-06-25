@@ -1,0 +1,47 @@
+.progress_few1 {
+    position: relative;
+    height: 10px;
+    width: 80%;
+    border-radius: 10px;
+    background-color: #fff;
+    top: -5%;
+    transform: translateY(50%);
+}
+
+.progress_few1 .color {
+    position: absolute;
+    background-color: #FFD700;
+    width: 0;
+    height: 10px;
+    border-radius: 15px;
+    animation: progresss 1.8s linear forwards;
+}
+
+@keyframes progresss {
+    0% {
+        width: 0.01%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/*Текст загрузки*/
+.loading_text, .loading_subtext {
+    position: absolute;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.loading_text {
+    top: 500%;
+    font-size: 23px;
+}
+
+.loading_subtext {
+    top: 1200%;
+    font-size: 19px;
+}
