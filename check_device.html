@@ -6,10 +6,49 @@
     <title>Device Check</title>
     <style>
         .hzhz {
-            background-image: url('dicpic/hz.png');
+            background-image: url('dicpic/hz_vert.png');
             background-size: auto;
-            background-repeat: space;
+            background-repeat: no-repeat;
             background-position: center;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Change to column to stack items vertically */
+            justify-content: center; /* Center items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .pic img{
+            margin-top: 3%;
+            width: 30%;
+
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            text-align: center;
+        }
+        a, p {
+            width: 30%;
+            color: #fff;
+            font-size: 200%;
+            text-shadow:
+                    -2px -2px 0 #000,
+                    2px -2px 0 #000,
+                    -2px 2px 0 #000,
+                    2px 2px 0 #000,
+                    -2px 0 0 #000,
+                    2px 0 0 #000,
+                    0 -2px 0 #000,
+                    0 2px 0 #000;
+            text-decoration: none;
+        }
+
+        p {
+            word-break: auto-phrase;
+            width: 35%;
+            text-align: center;
         }
     </style>
 </head>
@@ -25,12 +64,13 @@
             // Если устройство не мобильное, отображаем сообщение или QR-код
             document.body.innerHTML = `
                     <div class="hzhz">
-                    <div style="text-align: center; margin-top: 20%;">
-                        <p>Play on your mobile</p>
-                        <img src="dicpic/Qadam.png" alt="QR Code" style="width: 250px; height: 250px;">
+                        <p>Данное приложение доступно только с телефона.<br>Пожалуйста отсканируйте QR-код ниже на своем телефоне</p>
 
-                        <p>@web3_easily_bot</p>
-                    </div>
+                        <div class="pic">
+                            <img src="dicpic/Qadam.png" alt="Qadam">
+                        </div>
+
+                        <a href="https://t.me/web3_easily_bot">@web3_easily_bot<a>
                     </div>
                 `;
         } else {
