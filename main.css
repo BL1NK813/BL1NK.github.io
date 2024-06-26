@@ -31,7 +31,7 @@ body, html {
     background-size: cover;
     background-origin: border-box;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .avatar {
