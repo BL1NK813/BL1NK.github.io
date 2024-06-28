@@ -6,35 +6,36 @@
     <title>Device Check</title>
     <style>
         .hzhz {
-            background-image: url('dicpic/hz_vert.png');
+            background: black;
             background-size: auto;
             background-repeat: no-repeat;
             background-position: center;
             height: 100%;
             overflow: hidden;
             display: flex;
-            flex-direction: column; /* Change to column to stack items vertically */
-            justify-content: center; /* Center items vertically */
-            align-items: center; /* Center items horizontally */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
         .pic img{
-            margin-top: 3%;
-            width: 30%;
-
+            margin-top: 70%;
+            width: 70%;
         }
+
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             text-align: center;
         }
-        
+
         p{
-            margin-top: -5%;
+            text-align: center;
+            margin-top: 20%;
         }
-        
+
         a, p {
             width: 70%;
             color: #fff;
@@ -64,16 +65,13 @@
         if (!isMobileDevice()) {
             // Если устройство не мобильное, отображаем сообщение или QR-код
             document.body.innerHTML = `
-                    <div class="hzhz">
-                        <p>Данное приложение доступно только с телефона.<br>Пожалуйста отсканируйте QR-код ниже на своем телефоне</p>
-
-                        <div class="pic">
-                            <img src="dicpic/Qadam.png" alt="Qadam">
-                        </div>
-
-                        <a href="https://t.me/web3_easily_bot">@web3_easily_bot<a>
+                <div class="hzhz">
+                    <p>Desktop is boring.<br>Play on your mobile.</p>
+                    <div class="pic">
+                        <img src="dicpic/XOsX.gif" alt="Qadam">
                     </div>
-                `;
+                </div>
+            `;
         } else {
             window.location.href = 'https://bl1nk813.github.io/main';
         }
