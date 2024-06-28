@@ -1,0 +1,92 @@
+.task_text {
+    border-radius: 10px 10px 3px 3px;
+    background-color: #000;
+    width: 90%;
+    height: 15%;
+    padding: 1%;
+    font-size: 70%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: -11%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.task_text h1 {
+    margin-left: 35%;
+}
+
+.task_combo {
+}
+
+.combo_cart {
+}
+
+.task_bar {
+    width: 170%;
+    height: 9%;
+    margin-left: -37%;
+    display: flex;
+    text-align: center;
+    background-color: #000;
+    border-radius: 6px;
+    justify-content: space-between;
+    padding: 4%;
+    position: relative;
+}
+
+.bar-button {
+    background-color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 8px;
+    border: none;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.bar-button.active {
+    background-color: orangered;
+    border-radius: 6px;
+}
+
+.bar-content {
+    display: none;
+}
+
+.bar-content.active {
+    display: block;
+}
+
+.tasks_list {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 15px;
+}
+
+.tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    border-radius: 6px;
+    font-size: 10%;
+}
+
+.achieves_list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 5%;
+}
+
+.achieves {
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}

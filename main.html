@@ -11,8 +11,14 @@
     <link rel="stylesheet" href="page_loader.css">
     <script src="page_loader.js" defer></script>
 
-    <link rel="stylesheet" href="active_bar.css">
-    <script src="active_bar.js" defer></script>
+    <link rel="stylesheet" href="navigation.css">
+    <script src="navigation.js" defer></script>
+    <link rel="stylesheet" href="task_collection.css">
+    <script src="task_collection.js" defer></script>
+    <link rel="stylesheet" href="profile.css">
+    <script src="profile.js" defer></script>
+    <link rel="stylesheet" href="fren.css">
+    <script src="fren.js" defer></script>
 
     <link rel="stylesheet" href="notification.css">
     <script src="notification.js" defer></script>
@@ -23,7 +29,6 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
-
 <body>
 <div id="progress_few" class="progress_few1">
     <div class="color"></div>
@@ -32,13 +37,13 @@
 </div>
 
 <div class="container" style="display: none">
-    <div class="avatar">
-        <span class="avatar1" id="avatar1_id"><img src="dicpic/avatar.png" alt=""></span>
-        <span class="tg_name" id="tg_name_id">ABOBA1337</span>
-        <span class="avatar2"><img src="dicpic/main.png" alt="main"></span>
-    </div>
     <div class="content">
         <div class="nav-content" id="main">
+            <div class="avatar">
+                <span class="avatar1" id="avatar1_id"><img src="dicpic/avatar.png" alt=""></span>
+                <span class="tg_name" id="tg_name_id">ABOBA1337</span>
+                <span class="avatar2"><img src="dicpic/main.png" alt="main"></span>
+            </div>
             <div class="avatar_pod">
                 <div class="avatar_pod1">
                     <div class="tap_coast" id="tap_coast_id">+ 3<img src="dicpic/coin.png" alt="coin"></div>
@@ -72,33 +77,83 @@
 
             <div class="energy-info">
                 <span class="energy_tap"><img src="dicpic/energy.png" alt="energy">500/500</span>
-                <button class="boost_button"><img src="dicpic/boost.png" alt="boost">Буст</button>
+                <button class="upg-button" data-tab="upg"><img src="dicpic/boost.png" alt="boost">Улучшения</button>
+                <!--<div class="upg-content">
+                    <div class="upg_tap">111</div>
+                    <div class="upg_energy">222</div>
+                    <div class="boost">333</div>
+                </div>-->
             </div>
         </div>
 
+        <div class="nav-content" id="task">
+            <div class="task_text"><h1>Задания</h1></div>
+            <div class="task_combo"></div>
+            <div class="combo_cart"></div>
+            <div class="task_bar">
+                <button class="bar-button active" data-tab="tasks_bar">Задания</button>
+                <button class="bar-button" data-tab="achieves_bar">Коллекционки</button>
+            </div>
 
-        <div class="nav-content" id="tasks">
-
-            <div class="tasks"></div>
-            <h1>Задачи</h1>
-            <div class="list-tasks"></div>
-
+            <div class="bar-content" id="tasks_bar">
+                <div class="tasks_list">
+                    <button class="tasks" id="task_1"></button>
+                    <button class="tasks" id="task_2"></button>
+                    <button class="tasks" id="task_3"></button>
+                    <button class="tasks" id="task_4"></button>
+                    <button class="tasks" id="task_5"></button>
+                    <button class="tasks" id="task_6"></button>
+                    <button class="tasks" id="task_7"></button>
+                    <button class="tasks" id="task_8"></button>
+                    <button class="tasks" id="task_9"></button>
+                </div>
+            </div>
         </div>
 
-        <div class="nav-content" id="friends">
-            <h1>Друзья</h1>
+        <div class="bar-content" id="achieves_bar">
+            <div class="achieves_list">
+                <button class="achieves" id="achieve_1"></button>
+                <button class="achieves" id="achieve_2"></button>
+                <button class="achieves" id="achieve_3"></button>
+                <button class="achieves" id="achieve_4"></button>
+                <button class="achieves" id="achieve_5"></button>
+                <button class="achieves" id="achieve_6"></button>
+                <button class="achieves" id="achieve_7"></button>
+                <button class="achieves" id="achieve_8"></button>
+                <button class="achieves" id="achieve_9"></button>
+                <button class="achieves" id="achieve_10"></button>
+                <button class="achieves" id="achieve_11"></button>
+                <button class="achieves" id="achieve_12"></button>
+            </div>
+            <!--<div class="achieves_list3">
+                <div class="achieves" id="achieve_7"></div>
+                <div class="achieves" id="achieve_8"></div>
+                <div class="achieves" id="achieve_9"></div>
+            </div>-->
         </div>
 
-        <div class="nav-content" id="upgrades">
-            <h1>Улучшения</h1>
+        <div class="nav-content" id="frens">
+            <div class="frens_text"><h1>Друзья</h1></div>
+            <div class="frens_list">
+                <!-- Друзья содержимое здесь -->
+            </div>
+        </div>
+
+        <div class="nav-content" id="prof">
+            <div class="prof_text"><h1>Профиль</h1></div>
+            <div class="prof_list">
+                <!-- Профиль содержимое здесь -->
+            </div>
         </div>
 
     </div>
+
     <div class="navigation">
         <button class="nav-button" data-tab="main">Главная</button>
-        <button class="nav-button" data-tab="tasks">Задачи</button>
-        <button class="nav-button" data-tab="friends">Друзья</button>
-        <button class="nav-button" data-tab="upgrades">Улучшения</button>
+        <button class="nav-button" data-tab="task">Задания</button>
+        <button class="nav-button" data-tab="frens">Друзья</button>
+        <button class="nav-button" data-tab="prof">Профиль</button>
     </div>
+
 </div>
 </body>
