@@ -24,9 +24,8 @@
 }
 
 .task_bar {
-    width: 170%;
+    width: 90%;
     height: 9%;
-    margin-left: -37%;
     display: flex;
     text-align: center;
     background-color: #000;
