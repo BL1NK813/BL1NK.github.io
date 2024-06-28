@@ -16,7 +16,7 @@
     pointer-events: none;
 }
 
-.coin:hover .coin-notification {
+ {
     opacity: 1; /* При наведении делаем уведомление видимым */
     transform: translate(-50%, -60%); /* Немного поднимаем уведомление */
 }

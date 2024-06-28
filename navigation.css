@@ -1,0 +1,42 @@
+.content{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation {
+    width: 90%;
+    height: 5%;
+    padding: 2%;
+    margin-left: 3%;
+    display: flex;
+    text-align: center;
+    background-color: #000;
+    border-radius: 6px;
+    justify-content: space-around;
+    position: relative;
+    z-index: 99;
+}
+
+.nav-button {
+    background-color: #000;
+    cursor: pointer;
+    color: white;
+    padding: 10px 8px;
+    border: none;
+    z-index: 99;
+}
+
+.nav-button.active {
+    background-color: orangered;
+    border-radius: 6px;
+}
+
+.nav-content {
+    display: none;
+}
+
+.nav-content.active {
+    display: block;
+}

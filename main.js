@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const y = event.clientY - rect.top - rect.height / 2;
 
         button.style.transition = 'transform 0.2s ease';
-        requestAnimationFrame(() => {
-            button.style.transform = `rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
-        });
     });
 
     button.addEventListener('mouseup', function() {
@@ -110,4 +107,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
         farmCoinsElement.innerHTML = `<img src="dicpic/coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
     }
+
+    const barButtons = document.querySelectorAll('.bar-button');
+    const barContents = document.querySelectorAll('.bar-content');
+
+    barButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+
+            barButtons.forEach(btn => btn.classList.remove('active'));
+            barContents.forEach(content => content.classList.remove('active'));
+
+            // Добавляем класс active к текущей кнопке и контенту
+            button.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+
+    // Устанавливаем активную первую вкладку по умолчанию
+    barButtons[0].classList.add('active');
+    barContents[0].classList.add('active');
 });
