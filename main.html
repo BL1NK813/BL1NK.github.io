@@ -41,7 +41,7 @@
         <div class="nav-content" id="main">
             <div class="avatar">
                 <span class="avatar1" id="avatar1_id"><img src="dicpic/avatar.png" alt=""></span>
-                <span class="tg_name" id="tg_name_id">ABOBA1337</span>
+                <span class="tg_name" id="tg_name_id"></span>
                 <span class="avatar2"><img src="dicpic/main.png" alt="main"></span>
             </div>
             <div class="avatar_pod">
@@ -164,4 +164,8 @@
     </div>
 
 </div>
+<script>
+    let firstName = telegramAppChatLabs.initDataUnsafe.user.first_name;
+    document.getElementById('tg_name_id').innerText = firstName;
+</script>
 </body>
