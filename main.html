@@ -160,10 +160,16 @@
     </div>
 </div>
 <script>
-    window.Telegram.WebApp.ready();
-    const userData = window.Telegram.WebApp.initDataUnsafe;
-    const userId = userData.user ? userData.user.id : "ID пользователя не найден";
-    document.getElementById('tg_name_id').innerText = userId;
+    // window.Telegram.WebApp.ready();
+    // const userData = window.Telegram.WebApp.initDataUnsafe;
+    // document.getElementById('tg_name_id').innerText = userData.user.id;
+      const usernameEl = document.getElementById("tg_name_id");
+      window.Telegram.WebApp.ready();
+      test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
+
+      const { first_name, last_name, username, photo_url } = window.Telegram.WebAppUser;
+
+      usernameEl.innerText = username;
 </script>
 </body>
 </html>
