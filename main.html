@@ -41,7 +41,7 @@
         <div class="nav-content" id="main">
             <div class="avatar">
                 <span class="avatar1" id="avatar1_id"><img src="dicpic/avatar.png" alt=""></span>
-                <span class="tg_name" id="tg_name_id"></span>
+                <span class="tg_name" id="tg_name_id">user</span>
                 <span class="avatar2"><img src="dicpic/main.png" alt="main"></span>
             </div>
             <div class="avatar_pod">
@@ -165,7 +165,9 @@
 
 </div>
 <script>
-    const username = window.Telegram.WebApp.initDataUnsafe.id();
-    document.getElementById('tg_name_id').innerText = username;
+    window.Telegram.WebApp.ready();
+    const userData = window.Telegram.WebApp.initDataUnsafe;
+    const userId = userData.user ? userData.user.id : "ID пользователя не найден";
+    document.getElementById('tg_name_id').innerText = userId;
 </script>
 </body>
