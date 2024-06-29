@@ -163,11 +163,17 @@
     // window.Telegram.WebApp.ready();
     // const userData = window.Telegram.WebApp.initDataUnsafe;
     // document.getElementById('tg_name_id').innerText = userData.user.id;
+      const profileEl = document.getElementById("avatar1_id");
+      const nameEl = document.getElementById("name");
       const usernameEl = document.getElementById("tg_name_id");
+      const test = document.getElementById("test");
       window.Telegram.WebApp.ready();
       test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
 
-      const { first_name, last_name, username, photo_url } = window.Telegram.WebAppUser;
+      const { first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
+
+      // set the profile
+      profileEl.src = photo_url;
 
       usernameEl.innerText = username;
 </script>
