@@ -160,28 +160,10 @@
     </div>
 </div>
 <script>
-    window.Telegram.WebApp.ready(function() {
-        const userData = window.Telegram.WebApp.initDataUnsafe;
+    window.Telegram.WebApp.ready();
+    let first_name = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+    document.getElementById('tg_name_id').innerText = first_name;
 
-        if (userData && userData.user) {
-            const { first_name, last_name, username, photo_url } = userData.user;
-
-            const profileEl = document.getElementById("avatar1_id").querySelector('img');
-            const usernameEl = document.getElementById("tg_name_id");
-
-            // Установите изображение профиля, если оно есть
-            if (photo_url) {
-                profileEl.src = photo_url;
-            } else {
-                profileEl.src = "dicpic/avatar.png"; // Используйте изображение по умолчанию, если нет фото
-            }
-
-            // Установите имя пользователя
-            usernameEl.innerText = username ? username : 'Имя не установлено';
-        } else {
-            console.error("Данные пользователя не найдены или не инициализированы");
-        }
-    });
 </script>
 </body>
 </html>
