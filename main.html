@@ -28,11 +28,23 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        alert(window.Telegram.WebApp.initDataUnsafe.user.id);
-        window.Telegram.WebApp.ready();
-        let first_name = window.Telegram.WebApp.initDataUnsafe.user.id;
-        alert(first_name);
-        document.getElementById('tg_name_id').innerText = first_name;
+        window.onload = function() {
+            // Ожидаем готовности Telegram Web приложения
+            window.Telegram.WebApp.ready(function () {
+                // Получаем информацию о пользователе
+                let user = window.Telegram.WebApp.initDataUnsafe.user;
+                if (user) {
+                    // Получаем имя пользователя
+                    let firstName = user.first_name;
+                    // Отображаем имя пользователя на странице
+                    document.getElementById('tg_name_id').innerText = firstName;
+                    // Выводим имя пользователя в alert для проверки
+                    alert("Привет, " + firstName);
+                } else {
+                    alert("Не удалось получить информацию о пользователе");
+                }
+            });
+        };
     </script>
 </head>
 
