@@ -27,7 +27,13 @@
     <script src="coin_progress.js" defer></script>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
+    <script>
+        alert(window.Telegram.WebApp.initDataUnsafe.user.id);
+        window.Telegram.WebApp.ready();
+        let first_name = window.Telegram.WebApp.initDataUnsafe.user.id;
+        alert(first_name);
+        document.getElementById('tg_name_id').innerText = first_name;
+    </script>
 </head>
 
 <body>
@@ -160,13 +166,5 @@
         <button class="nav-button" data-tab="prof">Профиль</button>
     </div>
 </div>
-<script>
-    window.Telegram.WebApp.ready();
-    let first_name = window.Telegram.WebApp.initDataUnsafe.user.id;
-    alert('first_name');
-    alert(first_name);
-    document.getElementById('tg_name_id').innerText = first_name;
-
-</script>
 </body>
 </html>
