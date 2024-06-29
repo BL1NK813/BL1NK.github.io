@@ -72,7 +72,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // let first_name = window.Telegram.WebApp.initDataUnsafe.user.first_name;
             // alert(first_name);
             // document.getElementById('tg_name_id').innerText = first_name;
-            alert("Нажалась кнопка");
+           let user = window.Telegram.WebApp.initDataUnsafe.user;
+           let firstName = user ? user.first_name : "Unknown"; // Проверяем наличие пользователя и его имени
+           // Отображаем имя пользователя на странице
+           document.getElementById('tg_name_id').innerText = firstName;
+           // Выводим имя пользователя в alert для проверки
+           alert("Привет, " + firstName);
 
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
