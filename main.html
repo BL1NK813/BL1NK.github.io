@@ -160,22 +160,28 @@
     </div>
 </div>
 <script>
-    // window.Telegram.WebApp.ready();
-    // const userData = window.Telegram.WebApp.initDataUnsafe;
-    // document.getElementById('tg_name_id').innerText = userData.user.id;
-      const profileEl = document.getElementById("avatar1_id");
-      const nameEl = document.getElementById("name");
-      const usernameEl = document.getElementById("tg_name_id");
-      const test = document.getElementById("test");
-      window.Telegram.WebApp.ready();
-      test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
+    window.Telegram.WebApp.ready(function() {
+        const userData = window.Telegram.WebApp.initDataUnsafe;
 
-      const { first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
+        if (userData && userData.user) {
+            const { first_name, last_name, username, photo_url } = userData.user;
 
-      // set the profile
-      profileEl.src = photo_url;
+            const profileEl = document.getElementById("avatar1_id").querySelector('img');
+            const usernameEl = document.getElementById("tg_name_id");
 
-      usernameEl.innerText = username;
+            // Установите изображение профиля, если оно есть
+            if (photo_url) {
+                profileEl.src = photo_url;
+            } else {
+                profileEl.src = "dicpic/avatar.png"; // Используйте изображение по умолчанию, если нет фото
+            }
+
+            // Установите имя пользователя
+            usernameEl.innerText = username ? username : 'Имя не установлено';
+        } else {
+            console.error("Данные пользователя не найдены или не инициализированы");
+        }
+    });
 </script>
 </body>
 </html>
