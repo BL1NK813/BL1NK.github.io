@@ -165,22 +165,7 @@
 
 </div>
 <script>
-    const profileEl = document.getElementById("profile");
-    const nameEl = document.getElementById("name");
-    const usernameEl = document.getElementById("username");
-    const test = document.getElementById("test");
-    window.Telegram.WebApp.ready();
-    test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
-
-    const { first_name, last_name, username, photo_url } =
-        window.Telegram.WebApp.initDataUnsafe.user;
-
-    // set the profile
-    profileEl.src = photo_url;
-
-    nameEl.innerText = `${first_name} ${last_name}`;
-
-    usernameEl.innerText = username;
+    const username = window.Telegram.WebApp.initData;
     document.getElementById('tg_name_id').innerText = username;
 </script>
 </body>
