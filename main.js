@@ -107,4 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const farmCoinsElement = document.getElementById('farm_coins_id');
         farmCoinsElement.innerHTML = `<img src="dicpic/coin.png" alt="coin">${parseInt(farmCoinsElement.textContent) || 0}`;
     }
+    let first_name = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+    document.getElementById('tg_name_id').innerText = first_name;
 });
