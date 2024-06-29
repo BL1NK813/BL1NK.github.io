@@ -165,7 +165,7 @@
 
 </div>
 <script>
-    const username = window.Telegram.WebApp.initData;
+    const username = window.Telegram.WebApp.initDataUnsafe.id();
     document.getElementById('tg_name_id').innerText = username;
 </script>
 </body>
