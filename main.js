@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
             updateFarmCoinsDisplay();
             showCoinNotification(`+${coinsIncrement}`, event.clientX, event.clientY);
             increaseProgress();
+            let first_name = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+            alert(first_name);
+            document.getElementById('tg_name_id').innerText = first_name;
 
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
             setTimeout(() => {
