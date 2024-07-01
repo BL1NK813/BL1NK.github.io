@@ -109,7 +109,7 @@
 }
 
 .tasks_list {
-    margin-top: 12%;
+    margin-top: 7%;
     display: grid;
     grid-template-columns: repeat(3, 42%);
     grid-template-rows: repeat(3, 259%);
@@ -128,13 +128,12 @@
 }
 
 .achieves_list {
-    margin-top: 12%;
+    margin-top: 8%;
     display: grid;
     grid-template-columns: repeat(3, 42%);
     grid-template-rows: repeat(4, 150%);
     margin-left: -52%;
     gap: 10px;
-    overflow: scroll;
 }
 
 .achieves {
@@ -145,5 +144,4 @@
     border-color: #4caf50;
     border-radius: 6px;
     font-size: 10%;
-    
 }
