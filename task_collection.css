@@ -99,12 +99,12 @@
 }
 
 .tasks_list {
-    margin-top: 15%;
+    margin-top: 12%;
     display: grid;
-    grid-template-columns: repeat(3, 37%);
-    grid-template-rows: repeat(3, 140%);
-    margin-left: -31%;
-    gap: 15px;
+    grid-template-columns: repeat(3, 42%);
+    grid-template-rows: repeat(3, 219%);
+    margin-left: -52%;
+    gap: 10px;
 }
 
 .tasks {
@@ -118,11 +118,12 @@
 }
 
 .achieves_list {
+    margin-top: 12%;
     display: grid;
-    grid-template-columns: repeat(3, 50%);
-    grid-template-rows: repeat(4, 95%);
-    margin-left: -169%;
-    gap: 15px;
+    grid-template-columns: repeat(3, 42%);
+    grid-template-rows: repeat(4, 110%);
+    margin-left: -52%;
+    gap: 10px;
 }
 
 .achieves {

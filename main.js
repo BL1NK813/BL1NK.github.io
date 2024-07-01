@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
            let firstName = user ? user.first_name : "Unknown"; // Проверяем наличие пользователя и его имени
            // Отображаем имя пользователя на странице
            document.getElementById('tg_name_id').innerText = firstName;
-           // Выводим имя пользователя в alert для проверки
            alert("Привет, " + firstName);
 
             // Сбрасываем флаг обработки клика через короткое время, чтобы позволить новым кликам обрабатываться
